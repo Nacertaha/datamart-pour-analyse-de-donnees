@@ -1,0 +1,620 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/9/2022 9:10:31 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="VICTUSJIM"
+  DTS:CreatorName="VICTUSJIM\dmwag"
+  DTS:DTSID="{4F8864BA-1299-4CF3-B762-5C6730CF3EBE}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.521.0"
+  DTS:LocaleID="1036"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{C2724B91-FE76-40F3-8CB6-59E45333EAF1}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[VICTUSJIM\DJINSTANCE.SSIS_STA]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{73A5EF29-DFED-4A7D-858A-CE32F5FF2A04}"
+      DTS:ObjectName="VICTUSJIM\DJINSTANCE.SSIS_STA">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=VICTUSJIM\DJINSTANCE;Initial Catalog=SSIS_STA;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[VICTUSJIM\DJINSTANCE.SSIS_STA 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{6F475E6C-6825-4616-A160-48E76CA62D68}"
+      DTS:ObjectName="VICTUSJIM\DJINSTANCE.SSIS_STA 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=VICTUSJIM\DJINSTANCE;Initial Catalog=SSIS_STA;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Tâche d'exécution de requêtes SQL"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tâche d'exécution de requêtes SQL"
+      DTS:DTSID="{FDA9B2D9-19B4-4F5F-8397-9D6C320B64B8}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Tâche d'exécution de requêtes SQL"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022 CTP2.0; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Tâche de flux de données"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tâche de flux de données"
+      DTS:DTSID="{CE8258E4-019D-4EE5-AF93-42568DB24949}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Tâche de flux de données"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Tâche de flux de données\Data 2018"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Source du fichier plat;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;1"
+              description="Source du fichier plat"
+              localeId="1036"
+              name="Data 2018"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Spécifie si les colonnes dont la longueur est zéro sont traitées comme des valeurs NULL."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom d'une colonne de sortie contenant le nom du fichier. Si aucun nom n'est spécifié, aucune colonne de sortie contenant le nom du fichier ne sera générée."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Tâche de flux de données\Data 2018.Connections[FlatFileConnection]"
+                  connectionManagerID="{49F68398-65B2-4B2F-AED8-AA761A0B574D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DATA 2018]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Tâche de flux de données\Data 2018.Outputs[Sortie de source de fichier plat]"
+                  name="Sortie de source de fichier plat">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Data 2018.Outputs[Sortie de source de fichier plat].Columns[CallTimestamp]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tâche de flux de données\Data 2018.Outputs[Sortie de source de fichier plat].ExternalColumns[CallTimestamp]"
+                      length="50"
+                      lineageId="Package\Tâche de flux de données\Data 2018.Outputs[Sortie de source de fichier plat].Columns[CallTimestamp]"
+                      name="CallTimestamp"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Data 2018.Outputs[Sortie de source de fichier plat].Columns[Call Type]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tâche de flux de données\Data 2018.Outputs[Sortie de source de fichier plat].ExternalColumns[Call Type]"
+                      length="50"
+                      lineageId="Package\Tâche de flux de données\Data 2018.Outputs[Sortie de source de fichier plat].Columns[Call Type]"
+                      name="Call Type"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Data 2018.Outputs[Sortie de source de fichier plat].Columns[EmployeeID]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tâche de flux de données\Data 2018.Outputs[Sortie de source de fichier plat].ExternalColumns[EmployeeID]"
+                      length="50"
+                      lineageId="Package\Tâche de flux de données\Data 2018.Outputs[Sortie de source de fichier plat].Columns[EmployeeID]"
+                      name="EmployeeID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Data 2018.Outputs[Sortie de source de fichier plat].Columns[CallDuration]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tâche de flux de données\Data 2018.Outputs[Sortie de source de fichier plat].ExternalColumns[CallDuration]"
+                      length="50"
+                      lineageId="Package\Tâche de flux de données\Data 2018.Outputs[Sortie de source de fichier plat].Columns[CallDuration]"
+                      name="CallDuration"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Data 2018.Outputs[Sortie de source de fichier plat].Columns[WaitTime]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tâche de flux de données\Data 2018.Outputs[Sortie de source de fichier plat].ExternalColumns[WaitTime]"
+                      length="50"
+                      lineageId="Package\Tâche de flux de données\Data 2018.Outputs[Sortie de source de fichier plat].Columns[WaitTime]"
+                      name="WaitTime"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Data 2018.Outputs[Sortie de source de fichier plat].Columns[CallAbandoned]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tâche de flux de données\Data 2018.Outputs[Sortie de source de fichier plat].ExternalColumns[CallAbandoned]"
+                      length="50"
+                      lineageId="Package\Tâche de flux de données\Data 2018.Outputs[Sortie de source de fichier plat].Columns[CallAbandoned]"
+                      name="CallAbandoned"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\Data 2018.Outputs[Sortie de source de fichier plat].ExternalColumns[CallTimestamp]"
+                      codePage="65001"
+                      dataType="str"
+                      length="50"
+                      name="CallTimestamp" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\Data 2018.Outputs[Sortie de source de fichier plat].ExternalColumns[Call Type]"
+                      codePage="65001"
+                      dataType="str"
+                      length="50"
+                      name="Call Type" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\Data 2018.Outputs[Sortie de source de fichier plat].ExternalColumns[EmployeeID]"
+                      codePage="65001"
+                      dataType="str"
+                      length="50"
+                      name="EmployeeID" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\Data 2018.Outputs[Sortie de source de fichier plat].ExternalColumns[CallDuration]"
+                      codePage="65001"
+                      dataType="str"
+                      length="50"
+                      name="CallDuration" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\Data 2018.Outputs[Sortie de source de fichier plat].ExternalColumns[WaitTime]"
+                      codePage="65001"
+                      dataType="str"
+                      length="50"
+                      name="WaitTime" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\Data 2018.Outputs[Sortie de source de fichier plat].ExternalColumns[CallAbandoned]"
+                      codePage="65001"
+                      dataType="str"
+                      length="50"
+                      name="CallAbandoned" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Tâche de flux de données\Data 2018.Outputs[Sortie d'erreur de source de fichier plat]"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de source de fichier plat">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Data 2018.Outputs[Sortie d'erreur de source de fichier plat].Columns[Colonne de sortie d'erreur de source de fichier plat]"
+                      codePage="65001"
+                      dataType="text"
+                      description="Colonne de sortie d'erreur de source de fichier plat"
+                      lineageId="Package\Tâche de flux de données\Data 2018.Outputs[Sortie d'erreur de source de fichier plat].Columns[Colonne de sortie d'erreur de source de fichier plat]"
+                      name="Colonne de sortie d'erreur de source de fichier plat" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Data 2018.Outputs[Sortie d'erreur de source de fichier plat].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Tâche de flux de données\Data 2018.Outputs[Sortie d'erreur de source de fichier plat].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Data 2018.Outputs[Sortie d'erreur de source de fichier plat].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Tâche de flux de données\Data 2018.Outputs[Sortie d'erreur de source de fichier plat].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Tâche de flux de données\OLE DB_STA"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destination OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;4"
+              description="Destination OLE DB"
+              name="OLE DB_STA"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[dbo].[DATA_2018]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les valeurs fournies pour les colonnes d'identité seront copiées à la destination. Si la valeur est définie à False, les valeurs des colonnes d'identité seront générées automatiquement à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les colonnes contenant la valeur NULL auront cette valeur NULL copiée à la destination. Si la valeur est définie à False, les colonnes contenant la valeur NULL auront leurs valeurs par défaut insérées à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie les options à utiliser avec le chargement rapide.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie quand les validations sont émises pendant l'insertion des données.  Une valeur égale à 0 spécifie qu'une validation sera émise à la fin de l'insertion des données.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Tâche de flux de données\OLE DB_STA.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[VICTUSJIM\DJINSTANCE.SSIS_STA]"
+                  connectionManagerRefId="Package.ConnectionManagers[VICTUSJIM\DJINSTANCE.SSIS_STA]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Tâche de flux de données\OLE DB_STA.Inputs[Entrée de destination OLE DB]"
+                  errorOrTruncationOperation="Insérer"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrée de destination OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\OLE DB_STA.Inputs[Entrée de destination OLE DB].Columns[CallTimestamp]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CallTimestamp"
+                      externalMetadataColumnId="Package\Tâche de flux de données\OLE DB_STA.Inputs[Entrée de destination OLE DB].ExternalColumns[CallTimestamp]"
+                      lineageId="Package\Tâche de flux de données\Data 2018.Outputs[Sortie de source de fichier plat].Columns[CallTimestamp]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\OLE DB_STA.Inputs[Entrée de destination OLE DB].Columns[Call Type]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Call Type"
+                      externalMetadataColumnId="Package\Tâche de flux de données\OLE DB_STA.Inputs[Entrée de destination OLE DB].ExternalColumns[Call Type]"
+                      lineageId="Package\Tâche de flux de données\Data 2018.Outputs[Sortie de source de fichier plat].Columns[Call Type]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\OLE DB_STA.Inputs[Entrée de destination OLE DB].Columns[EmployeeID]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="EmployeeID"
+                      externalMetadataColumnId="Package\Tâche de flux de données\OLE DB_STA.Inputs[Entrée de destination OLE DB].ExternalColumns[EmployeeID]"
+                      lineageId="Package\Tâche de flux de données\Data 2018.Outputs[Sortie de source de fichier plat].Columns[EmployeeID]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\OLE DB_STA.Inputs[Entrée de destination OLE DB].Columns[CallDuration]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CallDuration"
+                      externalMetadataColumnId="Package\Tâche de flux de données\OLE DB_STA.Inputs[Entrée de destination OLE DB].ExternalColumns[CallDuration]"
+                      lineageId="Package\Tâche de flux de données\Data 2018.Outputs[Sortie de source de fichier plat].Columns[CallDuration]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\OLE DB_STA.Inputs[Entrée de destination OLE DB].Columns[WaitTime]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="WaitTime"
+                      externalMetadataColumnId="Package\Tâche de flux de données\OLE DB_STA.Inputs[Entrée de destination OLE DB].ExternalColumns[WaitTime]"
+                      lineageId="Package\Tâche de flux de données\Data 2018.Outputs[Sortie de source de fichier plat].Columns[WaitTime]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\OLE DB_STA.Inputs[Entrée de destination OLE DB].Columns[CallAbandoned]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CallAbandoned"
+                      externalMetadataColumnId="Package\Tâche de flux de données\OLE DB_STA.Inputs[Entrée de destination OLE DB].ExternalColumns[CallAbandoned]"
+                      lineageId="Package\Tâche de flux de données\Data 2018.Outputs[Sortie de source de fichier plat].Columns[CallAbandoned]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\OLE DB_STA.Inputs[Entrée de destination OLE DB].ExternalColumns[CallTimestamp]"
+                      dataType="wstr"
+                      length="255"
+                      name="CallTimestamp" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\OLE DB_STA.Inputs[Entrée de destination OLE DB].ExternalColumns[Call Type]"
+                      dataType="wstr"
+                      length="255"
+                      name="Call Type" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\OLE DB_STA.Inputs[Entrée de destination OLE DB].ExternalColumns[EmployeeID]"
+                      dataType="wstr"
+                      length="255"
+                      name="EmployeeID" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\OLE DB_STA.Inputs[Entrée de destination OLE DB].ExternalColumns[CallDuration]"
+                      dataType="wstr"
+                      length="255"
+                      name="CallDuration" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\OLE DB_STA.Inputs[Entrée de destination OLE DB].ExternalColumns[WaitTime]"
+                      dataType="wstr"
+                      length="255"
+                      name="WaitTime" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\OLE DB_STA.Inputs[Entrée de destination OLE DB].ExternalColumns[CallAbandoned]"
+                      dataType="wstr"
+                      length="255"
+                      name="CallAbandoned" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Tâche de flux de données\OLE DB_STA.Outputs[Sortie d'erreur de destination OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de destination OLE DB"
+                  synchronousInputId="Package\Tâche de flux de données\OLE DB_STA.Inputs[Entrée de destination OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\OLE DB_STA.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Tâche de flux de données\OLE DB_STA.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\OLE DB_STA.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Tâche de flux de données\OLE DB_STA.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Tâche de flux de données.Paths[Sortie de source de fichier plat]"
+              endId="Package\Tâche de flux de données\OLE DB_STA.Inputs[Entrée de destination OLE DB]"
+              name="Sortie de source de fichier plat"
+              startId="Package\Tâche de flux de données\Data 2018.Outputs[Sortie de source de fichier plat]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{324D645A-8A6E-4700-8153-6B7144989AF2}"
+      DTS:From="Package\Tâche d'exécution de requêtes SQL"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Tâche de flux de données" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="243.2,41.6"
+          Id="Package\Tâche d'exécution de requêtes SQL"
+          TopLeft="158.333327041732,62.4000004959107" />
+        <NodeLayout
+          Size="197.6,41.6"
+          Id="Package\Tâche de flux de données"
+          TopLeft="197.499992152055,154.266667892668" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="279.933327041732,104.000000495911">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="16.3666651103233,50.2666673967574"
+              Start="0,0"
+              End="16.3666651103233,42.7666673967574">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.1333336983787" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.1333336983787"
+                    Point2="0,25.1333336983787"
+                    Point3="4,25.1333336983787" />
+                  <mssgle:LineSegment
+                    End="12.3666651103233,25.1333336983787" />
+                  <mssgle:CubicBezierSegment
+                    Point1="12.3666651103233,25.1333336983787"
+                    Point2="16.3666651103233,25.1333336983787"
+                    Point3="16.3666651103233,29.1333336983787" />
+                  <mssgle:LineSegment
+                    End="16.3666651103233,42.7666673967574" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Tâche de flux de données">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="126.4,41.6"
+          Id="Package\Tâche de flux de données\Data 2018"
+          TopLeft="254.166656566991,66.7333338636822" />
+        <NodeLayout
+          Size="142.4,41.6"
+          Id="Package\Tâche de flux de données\OLE DB_STA"
+          TopLeft="255.83332316743,182.86666811996" />
+        <EdgeLayout
+          Id="Package\Tâche de flux de données.Paths[Sortie de source de fichier plat]"
+          TopLeft="317.199990065893,108.333333863682">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,74.5333342562782"
+              Start="0,0"
+              End="0,67.0333342562782">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,67.0333342562782" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tâche de flux de données\OLE DB_STA">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

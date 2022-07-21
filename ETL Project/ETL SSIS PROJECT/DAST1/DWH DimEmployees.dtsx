@@ -1,0 +1,1235 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/17/2022 11:10:06 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="VICTUSJIM"
+  DTS:CreatorName="VICTUSJIM\dmwag"
+  DTS:DTSID="{493A511B-8BC0-42C6-8013-31ECD4B82620}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.521.0"
+  DTS:LocaleID="1036"
+  DTS:ObjectName="DWH DimEmployees"
+  DTS:PackageType="5"
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{EBFFA6D1-8B02-4ADE-ABAB-85F35794F9B7}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT Load into DWH DimEmployee"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tâche de flux de données"
+      DTS:DTSID="{0A2A9FB9-6ED1-48F4-99BD-FF7817B24BAD}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT Load into DWH DimEmployee"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT Load into DWH DimEmployee\CMD - UPDATE Employee"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="Commande OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;2"
+              description="Exécute une instruction SQL pour chaque ligne d'un flux de données. Par exemple, appelez une procédure stockée 'nouvelle configuration d'employé' pour chaque ligne de la table 'nouveaux employés'. Remarque : l'exécution d'une instruction SQL pour chaque ligne d'un flux de données volumineux peut prendre beaucoup de temps."
+              name="CMD - UPDATE Employee"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[DimEmployee]
+   SET [EmployeeName] = ?
+      ,[Site] = ?
+      ,[ManagerName] = ?
+      ,[StateName] = ?
+      ,[StateCode] = ?
+ WHERE       [EmployeeID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT Load into DWH DimEmployee\CMD - UPDATE Employee.Connections[OleDbConnection]"
+                  connectionManagerID="{D43B3B21-F12E-4538-827C-5954EA363787}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SSIS_DWH]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT Load into DWH DimEmployee\CMD - UPDATE Employee.Inputs[Entrée de commande OLE DB]"
+                  errorOrTruncationOperation="Exécution de commande"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrée de commande OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Load into DWH DimEmployee\CMD - UPDATE Employee.Inputs[Entrée de commande OLE DB].Columns[EmployeeName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="EmployeeName"
+                      externalMetadataColumnId="Package\DFT Load into DWH DimEmployee\CMD - UPDATE Employee.Inputs[Entrée de commande OLE DB].ExternalColumns[Param_0]"
+                      lineageId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].Columns[EmployeeName]" />
+                    <inputColumn
+                      refId="Package\DFT Load into DWH DimEmployee\CMD - UPDATE Employee.Inputs[Entrée de commande OLE DB].Columns[Site]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Site"
+                      externalMetadataColumnId="Package\DFT Load into DWH DimEmployee\CMD - UPDATE Employee.Inputs[Entrée de commande OLE DB].ExternalColumns[Param_1]"
+                      lineageId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].Columns[Site]" />
+                    <inputColumn
+                      refId="Package\DFT Load into DWH DimEmployee\CMD - UPDATE Employee.Inputs[Entrée de commande OLE DB].Columns[ManagerName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ManagerName"
+                      externalMetadataColumnId="Package\DFT Load into DWH DimEmployee\CMD - UPDATE Employee.Inputs[Entrée de commande OLE DB].ExternalColumns[Param_2]"
+                      lineageId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].Columns[ManagerName]" />
+                    <inputColumn
+                      refId="Package\DFT Load into DWH DimEmployee\CMD - UPDATE Employee.Inputs[Entrée de commande OLE DB].Columns[StateName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="StateName"
+                      externalMetadataColumnId="Package\DFT Load into DWH DimEmployee\CMD - UPDATE Employee.Inputs[Entrée de commande OLE DB].ExternalColumns[Param_3]"
+                      lineageId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].Columns[StateName]" />
+                    <inputColumn
+                      refId="Package\DFT Load into DWH DimEmployee\CMD - UPDATE Employee.Inputs[Entrée de commande OLE DB].Columns[StateCode]"
+                      cachedDataType="wstr"
+                      cachedLength="2"
+                      cachedName="StateCode"
+                      externalMetadataColumnId="Package\DFT Load into DWH DimEmployee\CMD - UPDATE Employee.Inputs[Entrée de commande OLE DB].ExternalColumns[Param_4]"
+                      lineageId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].Columns[StateCode]" />
+                    <inputColumn
+                      refId="Package\DFT Load into DWH DimEmployee\CMD - UPDATE Employee.Inputs[Entrée de commande OLE DB].Columns[EmployeeID]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="EmployeeID"
+                      externalMetadataColumnId="Package\DFT Load into DWH DimEmployee\CMD - UPDATE Employee.Inputs[Entrée de commande OLE DB].ExternalColumns[Param_5]"
+                      lineageId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].Columns[EmployeeID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into DWH DimEmployee\CMD - UPDATE Employee.Inputs[Entrée de commande OLE DB].ExternalColumns[Param_0]"
+                      dataType="wstr"
+                      length="50"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Informations de paramètre.  Correspond aux valeurs DBPARAMFLAGSENUM OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into DWH DimEmployee\CMD - UPDATE Employee.Inputs[Entrée de commande OLE DB].ExternalColumns[Param_1]"
+                      dataType="wstr"
+                      length="30"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Informations de paramètre.  Correspond aux valeurs DBPARAMFLAGSENUM OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into DWH DimEmployee\CMD - UPDATE Employee.Inputs[Entrée de commande OLE DB].ExternalColumns[Param_2]"
+                      dataType="wstr"
+                      length="50"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Informations de paramètre.  Correspond aux valeurs DBPARAMFLAGSENUM OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into DWH DimEmployee\CMD - UPDATE Employee.Inputs[Entrée de commande OLE DB].ExternalColumns[Param_3]"
+                      dataType="wstr"
+                      length="50"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Informations de paramètre.  Correspond aux valeurs DBPARAMFLAGSENUM OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into DWH DimEmployee\CMD - UPDATE Employee.Inputs[Entrée de commande OLE DB].ExternalColumns[Param_4]"
+                      dataType="wstr"
+                      length="2"
+                      name="Param_4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Informations de paramètre.  Correspond aux valeurs DBPARAMFLAGSENUM OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into DWH DimEmployee\CMD - UPDATE Employee.Inputs[Entrée de commande OLE DB].ExternalColumns[Param_5]"
+                      dataType="wstr"
+                      length="50"
+                      name="Param_5">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Informations de paramètre.  Correspond aux valeurs DBPARAMFLAGSENUM OLE DB."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Load into DWH DimEmployee\CMD - UPDATE Employee.Outputs[Sortie de commande OLE DB]"
+                  exclusionGroup="1"
+                  name="Sortie de commande OLE DB"
+                  synchronousInputId="Package\DFT Load into DWH DimEmployee\CMD - UPDATE Employee.Inputs[Entrée de commande OLE DB]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT Load into DWH DimEmployee\CMD - UPDATE Employee.Outputs[Sortie d'erreur de commande OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de commande OLE DB"
+                  synchronousInputId="Package\DFT Load into DWH DimEmployee\CMD - UPDATE Employee.Inputs[Entrée de commande OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load into DWH DimEmployee\CMD - UPDATE Employee.Outputs[Sortie d'erreur de commande OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into DWH DimEmployee\CMD - UPDATE Employee.Outputs[Sortie d'erreur de commande OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Load into DWH DimEmployee\CMD - UPDATE Employee.Outputs[Sortie d'erreur de commande OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into DWH DimEmployee\CMD - UPDATE Employee.Outputs[Sortie d'erreur de commande OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Load into DWH DimEmployee\DST OLE DB - DWH DimEmployee"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destination OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;4"
+              description="Destination OLE DB"
+              name="DST OLE DB - DWH DimEmployee"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[dbo].[DimEmployee]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les valeurs fournies pour les colonnes d'identité seront copiées à la destination. Si la valeur est définie à False, les valeurs des colonnes d'identité seront générées automatiquement à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les colonnes contenant la valeur NULL auront cette valeur NULL copiée à la destination. Si la valeur est définie à False, les colonnes contenant la valeur NULL auront leurs valeurs par défaut insérées à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie les options à utiliser avec le chargement rapide.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie quand les validations sont émises pendant l'insertion des données.  Une valeur égale à 0 spécifie qu'une validation sera émise à la fin de l'insertion des données.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT Load into DWH DimEmployee\DST OLE DB - DWH DimEmployee.Connections[OleDbConnection]"
+                  connectionManagerID="{D43B3B21-F12E-4538-827C-5954EA363787}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SSIS_DWH]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT Load into DWH DimEmployee\DST OLE DB - DWH DimEmployee.Inputs[Entrée de destination OLE DB]"
+                  errorOrTruncationOperation="Insérer"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrée de destination OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Load into DWH DimEmployee\DST OLE DB - DWH DimEmployee.Inputs[Entrée de destination OLE DB].Columns[EmployeeName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="EmployeeName"
+                      externalMetadataColumnId="Package\DFT Load into DWH DimEmployee\DST OLE DB - DWH DimEmployee.Inputs[Entrée de destination OLE DB].ExternalColumns[EmployeeName]"
+                      lineageId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].Columns[EmployeeName]" />
+                    <inputColumn
+                      refId="Package\DFT Load into DWH DimEmployee\DST OLE DB - DWH DimEmployee.Inputs[Entrée de destination OLE DB].Columns[EmployeeID]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="EmployeeID"
+                      externalMetadataColumnId="Package\DFT Load into DWH DimEmployee\DST OLE DB - DWH DimEmployee.Inputs[Entrée de destination OLE DB].ExternalColumns[EmployeeID]"
+                      lineageId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].Columns[EmployeeID]" />
+                    <inputColumn
+                      refId="Package\DFT Load into DWH DimEmployee\DST OLE DB - DWH DimEmployee.Inputs[Entrée de destination OLE DB].Columns[Site]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Site"
+                      externalMetadataColumnId="Package\DFT Load into DWH DimEmployee\DST OLE DB - DWH DimEmployee.Inputs[Entrée de destination OLE DB].ExternalColumns[Site]"
+                      lineageId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].Columns[Site]" />
+                    <inputColumn
+                      refId="Package\DFT Load into DWH DimEmployee\DST OLE DB - DWH DimEmployee.Inputs[Entrée de destination OLE DB].Columns[ManagerName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ManagerName"
+                      externalMetadataColumnId="Package\DFT Load into DWH DimEmployee\DST OLE DB - DWH DimEmployee.Inputs[Entrée de destination OLE DB].ExternalColumns[ManagerName]"
+                      lineageId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].Columns[ManagerName]" />
+                    <inputColumn
+                      refId="Package\DFT Load into DWH DimEmployee\DST OLE DB - DWH DimEmployee.Inputs[Entrée de destination OLE DB].Columns[StateName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="StateName"
+                      externalMetadataColumnId="Package\DFT Load into DWH DimEmployee\DST OLE DB - DWH DimEmployee.Inputs[Entrée de destination OLE DB].ExternalColumns[StateName]"
+                      lineageId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].Columns[StateName]" />
+                    <inputColumn
+                      refId="Package\DFT Load into DWH DimEmployee\DST OLE DB - DWH DimEmployee.Inputs[Entrée de destination OLE DB].Columns[StateCode]"
+                      cachedDataType="wstr"
+                      cachedLength="2"
+                      cachedName="StateCode"
+                      externalMetadataColumnId="Package\DFT Load into DWH DimEmployee\DST OLE DB - DWH DimEmployee.Inputs[Entrée de destination OLE DB].ExternalColumns[StateCode]"
+                      lineageId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].Columns[StateCode]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into DWH DimEmployee\DST OLE DB - DWH DimEmployee.Inputs[Entrée de destination OLE DB].ExternalColumns[EmployeeKey]"
+                      dataType="i4"
+                      name="EmployeeKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into DWH DimEmployee\DST OLE DB - DWH DimEmployee.Inputs[Entrée de destination OLE DB].ExternalColumns[EmployeeName]"
+                      dataType="wstr"
+                      length="50"
+                      name="EmployeeName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into DWH DimEmployee\DST OLE DB - DWH DimEmployee.Inputs[Entrée de destination OLE DB].ExternalColumns[EmployeeID]"
+                      dataType="wstr"
+                      length="50"
+                      name="EmployeeID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into DWH DimEmployee\DST OLE DB - DWH DimEmployee.Inputs[Entrée de destination OLE DB].ExternalColumns[Site]"
+                      dataType="wstr"
+                      length="30"
+                      name="Site" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into DWH DimEmployee\DST OLE DB - DWH DimEmployee.Inputs[Entrée de destination OLE DB].ExternalColumns[ManagerName]"
+                      dataType="wstr"
+                      length="50"
+                      name="ManagerName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into DWH DimEmployee\DST OLE DB - DWH DimEmployee.Inputs[Entrée de destination OLE DB].ExternalColumns[StateName]"
+                      dataType="wstr"
+                      length="50"
+                      name="StateName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into DWH DimEmployee\DST OLE DB - DWH DimEmployee.Inputs[Entrée de destination OLE DB].ExternalColumns[StateCode]"
+                      dataType="wstr"
+                      length="2"
+                      name="StateCode" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Load into DWH DimEmployee\DST OLE DB - DWH DimEmployee.Outputs[Sortie d'erreur de destination OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de destination OLE DB"
+                  synchronousInputId="Package\DFT Load into DWH DimEmployee\DST OLE DB - DWH DimEmployee.Inputs[Entrée de destination OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load into DWH DimEmployee\DST OLE DB - DWH DimEmployee.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into DWH DimEmployee\DST OLE DB - DWH DimEmployee.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Load into DWH DimEmployee\DST OLE DB - DWH DimEmployee.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into DWH DimEmployee\DST OLE DB - DWH DimEmployee.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Load into DWH DimEmployee\LKP - Any Change ?"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Recherche;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;6"
+              description="Joint des colonnes supplémentaires au flux de données en recherchant des valeurs dans une table. Par exemple, joignez la colonne 'id employé' à la table des employés afin d'obtenir la 'date d'embauche' et le 'nom de l'employé'. Nous recommandons cette transformation lorsque la table de recherche peut être stockée en mémoire."
+              name="LKP - Any Change ?"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Spécifie l'instruction SQL qui génère la table de correspondance."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DimEmployee]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie une instruction SQL qui utilise des paramètres pour générer la table de correspondance."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DimEmployee]) [refTable]
+where [refTable].[EmployeeName] = ? and [refTable].[EmployeeID] = ? and [refTable].[Site] = ? and [refTable].[ManagerName] = ? and [refTable].[StateName] = ? and [refTable].[StateCode] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le type de connexion utilisé pour accéder au dataset de référence."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le type de cache de la table de correspondance."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie comment la transformation de recherche gère les lignes sans entrées correspondantes dans le jeu de données de référence."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le pourcentage du cache alloué aux lignes sans entrées correspondantes dans le dataset de référence."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Utilisation maximale de la mémoire pour le cache de référence sur une plateforme 32 bits."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Utilisation maximale de la mémoire pour le cache de référence sur une plateforme 64 bits."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indique si les métadonnées sont à référencer en format XML."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="EmployeeKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="EmployeeName" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="EmployeeID" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Site" dataType="DT_WSTR" length="30" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ManagerName" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="StateName" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="StateCode" dataType="DT_WSTR" length="2" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Spécifie la liste d'identificateurs de traçabilité se mappant aux paramètres utilisés dans la propriété SQLCommand par l'instruction SQL. Les entrées dans la liste sont séparées par des points-virgules."
+                  name="ParameterMap">#{Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].Columns[EmployeeName]};#{Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].Columns[EmployeeID]};#{Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].Columns[Site]};#{Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].Columns[ManagerName]};#{Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].Columns[StateName]};#{Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].Columns[StateCode]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Détermine si les clés dupliquées dans les données de référence doivent être traitées en tant qu'erreurs lorsque le mode Cache complet est utilisé."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT Load into DWH DimEmployee\LKP - Any Change ?.Connections[OleDbConnection]"
+                  connectionManagerID="{D43B3B21-F12E-4538-827C-5954EA363787}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SSIS_DWH]"
+                  description="Gestionnaire de connexions utilisé pour accéder aux données de correspondance."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT Load into DWH DimEmployee\LKP - Any Change ?.Inputs[Entrée de recherche]"
+                  name="Entrée de recherche">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Load into DWH DimEmployee\LKP - Any Change ?.Inputs[Entrée de recherche].Columns[EmployeeID]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="EmployeeID"
+                      lineageId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].Columns[EmployeeID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie la colonne de la table de référence sur laquelle une colonne se lie."
+                          name="JoinToReferenceColumn">EmployeeID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Spécifie la colonne de la table de référence à partir de laquelle une colonne est copiée."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load into DWH DimEmployee\LKP - Any Change ?.Inputs[Entrée de recherche].Columns[EmployeeName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="EmployeeName"
+                      lineageId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].Columns[EmployeeName]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie la colonne de la table de référence sur laquelle une colonne se lie."
+                          name="JoinToReferenceColumn">EmployeeName</property>
+                        <property
+                          dataType="System.Null"
+                          description="Spécifie la colonne de la table de référence à partir de laquelle une colonne est copiée."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load into DWH DimEmployee\LKP - Any Change ?.Inputs[Entrée de recherche].Columns[Site]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Site"
+                      lineageId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].Columns[Site]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie la colonne de la table de référence sur laquelle une colonne se lie."
+                          name="JoinToReferenceColumn">Site</property>
+                        <property
+                          dataType="System.Null"
+                          description="Spécifie la colonne de la table de référence à partir de laquelle une colonne est copiée."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load into DWH DimEmployee\LKP - Any Change ?.Inputs[Entrée de recherche].Columns[ManagerName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ManagerName"
+                      lineageId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].Columns[ManagerName]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie la colonne de la table de référence sur laquelle une colonne se lie."
+                          name="JoinToReferenceColumn">ManagerName</property>
+                        <property
+                          dataType="System.Null"
+                          description="Spécifie la colonne de la table de référence à partir de laquelle une colonne est copiée."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load into DWH DimEmployee\LKP - Any Change ?.Inputs[Entrée de recherche].Columns[StateName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="StateName"
+                      lineageId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].Columns[StateName]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie la colonne de la table de référence sur laquelle une colonne se lie."
+                          name="JoinToReferenceColumn">StateName</property>
+                        <property
+                          dataType="System.Null"
+                          description="Spécifie la colonne de la table de référence à partir de laquelle une colonne est copiée."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load into DWH DimEmployee\LKP - Any Change ?.Inputs[Entrée de recherche].Columns[StateCode]"
+                      cachedDataType="wstr"
+                      cachedLength="2"
+                      cachedName="StateCode"
+                      lineageId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].Columns[StateCode]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie la colonne de la table de référence sur laquelle une colonne se lie."
+                          name="JoinToReferenceColumn">StateCode</property>
+                        <property
+                          dataType="System.Null"
+                          description="Spécifie la colonne de la table de référence à partir de laquelle une colonne est copiée."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Load into DWH DimEmployee\LKP - Any Change ?.Outputs[Sortie de recherche avec correspondance]"
+                  errorOrTruncationOperation="Recherche"
+                  exclusionGroup="1"
+                  name="Sortie de recherche avec correspondance"
+                  synchronousInputId="Package\DFT Load into DWH DimEmployee\LKP - Any Change ?.Inputs[Entrée de recherche]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT Load into DWH DimEmployee\LKP - Any Change ?.Outputs[Sortie de recherche sans correspondance]"
+                  description="Sortie de recherche gérant les lignes sans entrées correspondantes dans le dataset de référence. Utilisez cette sortie lorsque la propriété NoMatchBehavior a la valeur « Envoyez les lignes sans entrées correspondantes dans la sortie sans correspondance »."
+                  exclusionGroup="1"
+                  name="Sortie de recherche sans correspondance"
+                  synchronousInputId="Package\DFT Load into DWH DimEmployee\LKP - Any Change ?.Inputs[Entrée de recherche]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT Load into DWH DimEmployee\LKP - Any Change ?.Outputs[Sortie d'erreur de recherche]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de recherche"
+                  synchronousInputId="Package\DFT Load into DWH DimEmployee\LKP - Any Change ?.Inputs[Entrée de recherche]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load into DWH DimEmployee\LKP - Any Change ?.Outputs[Sortie d'erreur de recherche].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into DWH DimEmployee\LKP - Any Change ?.Outputs[Sortie d'erreur de recherche].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Load into DWH DimEmployee\LKP - Any Change ?.Outputs[Sortie d'erreur de recherche].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into DWH DimEmployee\LKP - Any Change ?.Outputs[Sortie d'erreur de recherche].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Load into DWH DimEmployee\LKP - Employee exists ?"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Recherche;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;6"
+              description="Joint des colonnes supplémentaires au flux de données en recherchant des valeurs dans une table. Par exemple, joignez la colonne 'id employé' à la table des employés afin d'obtenir la 'date d'embauche' et le 'nom de l'employé'. Nous recommandons cette transformation lorsque la table de recherche peut être stockée en mémoire."
+              name="LKP - Employee exists ?"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Spécifie l'instruction SQL qui génère la table de correspondance."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DimEmployee]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie une instruction SQL qui utilise des paramètres pour générer la table de correspondance."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DimEmployee]) [refTable]
+where [refTable].[EmployeeID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le type de connexion utilisé pour accéder au dataset de référence."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le type de cache de la table de correspondance."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie comment la transformation de recherche gère les lignes sans entrées correspondantes dans le jeu de données de référence."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le pourcentage du cache alloué aux lignes sans entrées correspondantes dans le dataset de référence."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Utilisation maximale de la mémoire pour le cache de référence sur une plateforme 32 bits."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Utilisation maximale de la mémoire pour le cache de référence sur une plateforme 64 bits."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indique si les métadonnées sont à référencer en format XML."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="EmployeeKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="EmployeeName" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="EmployeeID" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Site" dataType="DT_WSTR" length="30" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ManagerName" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="StateName" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="StateCode" dataType="DT_WSTR" length="2" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Spécifie la liste d'identificateurs de traçabilité se mappant aux paramètres utilisés dans la propriété SQLCommand par l'instruction SQL. Les entrées dans la liste sont séparées par des points-virgules."
+                  name="ParameterMap">#{Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].Columns[EmployeeID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Détermine si les clés dupliquées dans les données de référence doivent être traitées en tant qu'erreurs lorsque le mode Cache complet est utilisé."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT Load into DWH DimEmployee\LKP - Employee exists ?.Connections[OleDbConnection]"
+                  connectionManagerID="{D43B3B21-F12E-4538-827C-5954EA363787}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SSIS_DWH]"
+                  description="Gestionnaire de connexions utilisé pour accéder aux données de correspondance."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT Load into DWH DimEmployee\LKP - Employee exists ?.Inputs[Entrée de recherche]"
+                  name="Entrée de recherche">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Load into DWH DimEmployee\LKP - Employee exists ?.Inputs[Entrée de recherche].Columns[EmployeeID]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="EmployeeID"
+                      lineageId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].Columns[EmployeeID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie la colonne de la table de référence sur laquelle une colonne se lie."
+                          name="JoinToReferenceColumn">EmployeeID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Spécifie la colonne de la table de référence à partir de laquelle une colonne est copiée."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Load into DWH DimEmployee\LKP - Employee exists ?.Outputs[Sortie de recherche avec correspondance]"
+                  errorOrTruncationOperation="Recherche"
+                  exclusionGroup="1"
+                  name="Sortie de recherche avec correspondance"
+                  synchronousInputId="Package\DFT Load into DWH DimEmployee\LKP - Employee exists ?.Inputs[Entrée de recherche]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT Load into DWH DimEmployee\LKP - Employee exists ?.Outputs[Sortie de recherche sans correspondance]"
+                  description="Sortie de recherche gérant les lignes sans entrées correspondantes dans le dataset de référence. Utilisez cette sortie lorsque la propriété NoMatchBehavior a la valeur « Envoyez les lignes sans entrées correspondantes dans la sortie sans correspondance »."
+                  exclusionGroup="1"
+                  name="Sortie de recherche sans correspondance"
+                  synchronousInputId="Package\DFT Load into DWH DimEmployee\LKP - Employee exists ?.Inputs[Entrée de recherche]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT Load into DWH DimEmployee\LKP - Employee exists ?.Outputs[Sortie d'erreur de recherche]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de recherche"
+                  synchronousInputId="Package\DFT Load into DWH DimEmployee\LKP - Employee exists ?.Inputs[Entrée de recherche]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load into DWH DimEmployee\LKP - Employee exists ?.Outputs[Sortie d'erreur de recherche].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into DWH DimEmployee\LKP - Employee exists ?.Outputs[Sortie d'erreur de recherche].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Load into DWH DimEmployee\LKP - Employee exists ?.Outputs[Sortie d'erreur de recherche].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into DWH DimEmployee\LKP - Employee exists ?.Outputs[Sortie d'erreur de recherche].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Source OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;7"
+              description="Source OLE DB"
+              name="SRC OLE DB - ODS EMPLOYEES"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[dbo].[Employees]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable contenant la commande SQL à exécuter."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="Mappages entre les paramètres de la commande SQL et les variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Connections[OleDbConnection]"
+                  connectionManagerID="{68AE270F-0EE5-4ECF-9E0D-8E4F38A47D57}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SSIS_ODS]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB]"
+                  name="Sortie de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].Columns[EmployeeName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].ExternalColumns[EmployeeName]"
+                      length="50"
+                      lineageId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].Columns[EmployeeName]"
+                      name="EmployeeName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].Columns[EmployeeID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].ExternalColumns[EmployeeID]"
+                      length="50"
+                      lineageId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].Columns[EmployeeID]"
+                      name="EmployeeID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].Columns[Site]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].ExternalColumns[Site]"
+                      length="30"
+                      lineageId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].Columns[Site]"
+                      name="Site"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].Columns[ManagerName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].ExternalColumns[ManagerName]"
+                      length="50"
+                      lineageId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].Columns[ManagerName]"
+                      name="ManagerName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].Columns[StateName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].ExternalColumns[StateName]"
+                      length="50"
+                      lineageId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].Columns[StateName]"
+                      name="StateName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].Columns[StateCode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].ExternalColumns[StateCode]"
+                      length="2"
+                      lineageId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].Columns[StateCode]"
+                      name="StateCode"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].ExternalColumns[EmployeeName]"
+                      dataType="wstr"
+                      length="50"
+                      name="EmployeeName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].ExternalColumns[EmployeeID]"
+                      dataType="wstr"
+                      length="50"
+                      name="EmployeeID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].ExternalColumns[Site]"
+                      dataType="wstr"
+                      length="30"
+                      name="Site" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].ExternalColumns[ManagerName]"
+                      dataType="wstr"
+                      length="50"
+                      name="ManagerName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].ExternalColumns[StateName]"
+                      dataType="wstr"
+                      length="50"
+                      name="StateName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB].ExternalColumns[StateCode]"
+                      dataType="wstr"
+                      length="2"
+                      name="StateCode" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie d'erreur de source OLE DB]"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie d'erreur de source OLE DB].Columns[EmployeeName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie d'erreur de source OLE DB].Columns[EmployeeName]"
+                      name="EmployeeName" />
+                    <outputColumn
+                      refId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie d'erreur de source OLE DB].Columns[EmployeeID]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie d'erreur de source OLE DB].Columns[EmployeeID]"
+                      name="EmployeeID" />
+                    <outputColumn
+                      refId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie d'erreur de source OLE DB].Columns[Site]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie d'erreur de source OLE DB].Columns[Site]"
+                      name="Site" />
+                    <outputColumn
+                      refId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie d'erreur de source OLE DB].Columns[ManagerName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie d'erreur de source OLE DB].Columns[ManagerName]"
+                      name="ManagerName" />
+                    <outputColumn
+                      refId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie d'erreur de source OLE DB].Columns[StateName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie d'erreur de source OLE DB].Columns[StateName]"
+                      name="StateName" />
+                    <outputColumn
+                      refId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie d'erreur de source OLE DB].Columns[StateCode]"
+                      dataType="wstr"
+                      length="2"
+                      lineageId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie d'erreur de source OLE DB].Columns[StateCode]"
+                      name="StateCode" />
+                    <outputColumn
+                      refId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT Load into DWH DimEmployee.Paths[Sortie de recherche avec correspondance]"
+              endId="Package\DFT Load into DWH DimEmployee\LKP - Any Change ?.Inputs[Entrée de recherche]"
+              name="Sortie de recherche avec correspondance"
+              startId="Package\DFT Load into DWH DimEmployee\LKP - Employee exists ?.Outputs[Sortie de recherche avec correspondance]" />
+            <path
+              refId="Package\DFT Load into DWH DimEmployee.Paths[Sortie de recherche sans correspondance]"
+              endId="Package\DFT Load into DWH DimEmployee\DST OLE DB - DWH DimEmployee.Inputs[Entrée de destination OLE DB]"
+              name="Sortie de recherche sans correspondance"
+              startId="Package\DFT Load into DWH DimEmployee\LKP - Employee exists ?.Outputs[Sortie de recherche sans correspondance]" />
+            <path
+              refId="Package\DFT Load into DWH DimEmployee.Paths[Sortie de recherche sans correspondance1]"
+              endId="Package\DFT Load into DWH DimEmployee\CMD - UPDATE Employee.Inputs[Entrée de commande OLE DB]"
+              name="Sortie de recherche sans correspondance"
+              startId="Package\DFT Load into DWH DimEmployee\LKP - Any Change ?.Outputs[Sortie de recherche sans correspondance]" />
+            <path
+              refId="Package\DFT Load into DWH DimEmployee.Paths[Sortie de source OLE DB]"
+              endId="Package\DFT Load into DWH DimEmployee\LKP - Employee exists ?.Inputs[Entrée de recherche]"
+              name="Sortie de source OLE DB"
+              startId="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES.Outputs[Sortie de source OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="239.2,41.6"
+          Id="Package\DFT Load into DWH DimEmployee"
+          TopLeft="201.666658653154,169.000001343091" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT Load into DWH DimEmployee">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="239.2,41.6"
+          Id="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES"
+          TopLeft="110.833328929213,28.6000002272924" />
+        <NodeLayout
+          Size="241.6,41.6"
+          Id="Package\DFT Load into DWH DimEmployee\DST OLE DB - DWH DimEmployee"
+          TopLeft="109.999995628993,251.333335330751" />
+        <NodeLayout
+          Size="172.8,41.6"
+          Id="Package\DFT Load into DWH DimEmployee\LKP - Any Change ?"
+          TopLeft="534.999978741011,147.333334504234" />
+        <NodeLayout
+          Size="191.2,41.6"
+          Id="Package\DFT Load into DWH DimEmployee\LKP - Employee exists ?"
+          TopLeft="136.666661236021,147.333334504233" />
+        <NodeLayout
+          Size="202.4,41.6"
+          Id="Package\DFT Load into DWH DimEmployee\CMD - UPDATE Employee"
+          TopLeft="954.299969104927,148.200001177788" />
+        <EdgeLayout
+          Id="Package\DFT Load into DWH DimEmployee.Paths[Sortie de source OLE DB]"
+          TopLeft="231.349995082617,70.2000002272924">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,77.1333342769411"
+              Start="0,0"
+              End="0,69.6333342769411">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,69.6333342769411" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Load into DWH DimEmployee.Paths[Sortie de recherche sans correspondance1]"
+          TopLeft="707.799978741011,168.566667841011">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="246.499990363916,0"
+              Start="0,0"
+              End="238.999990363916,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="238.999990363916,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="27.9979834632078,5,183.0040234375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Load into DWH DimEmployee.Paths[Sortie de recherche sans correspondance]"
+          TopLeft="231.533328432507,188.933334504233">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,62.4000008265178"
+              Start="0,0"
+              End="0,54.9000008265178">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.9000008265178" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-91.50201171875,21.6453129132589,183.0040234375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Load into DWH DimEmployee.Paths[Sortie de recherche avec correspondance]"
+          TopLeft="327.866661236021,168.133334504234">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="207.13331750499,0"
+              Start="0,0"
+              End="199.63331750499,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="199.63331750499,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="8.13964703374498,5,183.3540234375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Load into DWH DimEmployee\LKP - Employee exists ?">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimEmployee]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Load into DWH DimEmployee\LKP - Any Change ?">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimEmployee]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Load into DWH DimEmployee\DST OLE DB - DWH DimEmployee">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Load into DWH DimEmployee\SRC OLE DB - ODS EMPLOYEES">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

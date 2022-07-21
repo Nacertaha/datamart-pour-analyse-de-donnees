@@ -1,0 +1,818 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/15/2022 12:04:25 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="VICTUSJIM"
+  DTS:CreatorName="VICTUSJIM\dmwag"
+  DTS:DTSID="{9906F518-E623-4950-A742-259910C2AF9B}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.521.0"
+  DTS:LocaleID="1036"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{473A4CD2-E7DB-4099-8D40-DF861F619487}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[VICTUSJIM\SQLEXPRESS.SSIS_ODS]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{8227D67F-FDE1-4B74-95E7-F23D60C9941E}"
+      DTS:ObjectName="VICTUSJIM\SQLEXPRESS.SSIS_ODS">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=VICTUSJIM\SQLEXPRESS;Initial Catalog=SSIS_ODS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[VICTUSJIM\SQLEXPRESS.SSIS_STA]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{5333DE5B-71F3-48FA-A30D-7DA582AC7EEF}"
+      DTS:ObjectName="VICTUSJIM\SQLEXPRESS.SSIS_STA">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=VICTUSJIM\SQLEXPRESS;Initial Catalog=SSIS_STA;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT Load into ODS Call Charges"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tâche de flux de données"
+      DTS:DTSID="{A2C7CF2F-BE7C-43B0-B464-1F3D6D8A524E}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT Load into ODS Call Charges"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT Load into ODS Call Charges\SRC OLE DB ODS CALL CHARGES"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destination OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;4"
+              description="Destination OLE DB"
+              name="SRC OLE DB ODS CALL CHARGES"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[ODS_CALLCHARGES]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les valeurs fournies pour les colonnes d'identité seront copiées à la destination. Si la valeur est définie à False, les valeurs des colonnes d'identité seront générées automatiquement à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les colonnes contenant la valeur NULL auront cette valeur NULL copiée à la destination. Si la valeur est définie à False, les colonnes contenant la valeur NULL auront leurs valeurs par défaut insérées à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie les options à utiliser avec le chargement rapide.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie quand les validations sont émises pendant l'insertion des données.  Une valeur égale à 0 spécifie qu'une validation sera émise à la fin de l'insertion des données.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT Load into ODS Call Charges\SRC OLE DB ODS CALL CHARGES.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[VICTUSJIM\SQLEXPRESS.SSIS_STA]"
+                  connectionManagerRefId="Package.ConnectionManagers[VICTUSJIM\SQLEXPRESS.SSIS_STA]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT Load into ODS Call Charges\SRC OLE DB ODS CALL CHARGES.Inputs[Entrée de destination OLE DB]"
+                  errorOrTruncationOperation="Insérer"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrée de destination OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Call Charges\SRC OLE DB ODS CALL CHARGES.Inputs[Entrée de destination OLE DB].Columns[Call Type Key]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Call Type Key"
+                      externalMetadataColumnId="Package\DFT Load into ODS Call Charges\SRC OLE DB ODS CALL CHARGES.Inputs[Entrée de destination OLE DB].ExternalColumns[Call Type Key]"
+                      lineageId="Package\DFT Load into ODS Call Charges\Tableau croisé dynamique.Outputs[Sortie croisée dynamique par défaut].Columns[Call Type Key]" />
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Call Charges\SRC OLE DB ODS CALL CHARGES.Inputs[Entrée de destination OLE DB].Columns[C_Call Charges (2018)_BOOLEAN]"
+                      cachedDataType="bool"
+                      cachedName="C_Call Charges (2018)_BOOLEAN"
+                      externalMetadataColumnId="Package\DFT Load into ODS Call Charges\SRC OLE DB ODS CALL CHARGES.Inputs[Entrée de destination OLE DB].ExternalColumns[C_Call Charges (2018)_BOOLEAN]"
+                      lineageId="Package\DFT Load into ODS Call Charges\Tableau croisé dynamique.Outputs[Sortie croisée dynamique par défaut].Columns[C_Call Charges (2018)_BOOLEAN]" />
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Call Charges\SRC OLE DB ODS CALL CHARGES.Inputs[Entrée de destination OLE DB].Columns[C_Call Charges (2019)_BOOLEAN]"
+                      cachedDataType="bool"
+                      cachedName="C_Call Charges (2019)_BOOLEAN"
+                      externalMetadataColumnId="Package\DFT Load into ODS Call Charges\SRC OLE DB ODS CALL CHARGES.Inputs[Entrée de destination OLE DB].ExternalColumns[C_Call Charges (2019)_BOOLEAN]"
+                      lineageId="Package\DFT Load into ODS Call Charges\Tableau croisé dynamique.Outputs[Sortie croisée dynamique par défaut].Columns[C_Call Charges (2019)_BOOLEAN]" />
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Call Charges\SRC OLE DB ODS CALL CHARGES.Inputs[Entrée de destination OLE DB].Columns[C_Call Charges (2020)_BOOLEAN]"
+                      cachedDataType="bool"
+                      cachedName="C_Call Charges (2020)_BOOLEAN"
+                      externalMetadataColumnId="Package\DFT Load into ODS Call Charges\SRC OLE DB ODS CALL CHARGES.Inputs[Entrée de destination OLE DB].ExternalColumns[C_Call Charges (2020)_BOOLEAN]"
+                      lineageId="Package\DFT Load into ODS Call Charges\Tableau croisé dynamique.Outputs[Sortie croisée dynamique par défaut].Columns[C_Call Charges (2020)_BOOLEAN]" />
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Call Charges\SRC OLE DB ODS CALL CHARGES.Inputs[Entrée de destination OLE DB].Columns[C_Call Charges (2021)_BOOLEAN]"
+                      cachedDataType="bool"
+                      cachedName="C_Call Charges (2021)_BOOLEAN"
+                      externalMetadataColumnId="Package\DFT Load into ODS Call Charges\SRC OLE DB ODS CALL CHARGES.Inputs[Entrée de destination OLE DB].ExternalColumns[C_Call Charges (2021)_BOOLEAN]"
+                      lineageId="Package\DFT Load into ODS Call Charges\Tableau croisé dynamique.Outputs[Sortie croisée dynamique par défaut].Columns[C_Call Charges (2021)_BOOLEAN]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into ODS Call Charges\SRC OLE DB ODS CALL CHARGES.Inputs[Entrée de destination OLE DB].ExternalColumns[Call Type Key]"
+                      dataType="wstr"
+                      length="255"
+                      name="Call Type Key" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into ODS Call Charges\SRC OLE DB ODS CALL CHARGES.Inputs[Entrée de destination OLE DB].ExternalColumns[C_Call Charges (2018)_BOOLEAN]"
+                      dataType="bool"
+                      name="C_Call Charges (2018)_BOOLEAN" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into ODS Call Charges\SRC OLE DB ODS CALL CHARGES.Inputs[Entrée de destination OLE DB].ExternalColumns[C_Call Charges (2019)_BOOLEAN]"
+                      dataType="bool"
+                      name="C_Call Charges (2019)_BOOLEAN" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into ODS Call Charges\SRC OLE DB ODS CALL CHARGES.Inputs[Entrée de destination OLE DB].ExternalColumns[C_Call Charges (2020)_BOOLEAN]"
+                      dataType="bool"
+                      name="C_Call Charges (2020)_BOOLEAN" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into ODS Call Charges\SRC OLE DB ODS CALL CHARGES.Inputs[Entrée de destination OLE DB].ExternalColumns[C_Call Charges (2021)_BOOLEAN]"
+                      dataType="bool"
+                      name="C_Call Charges (2021)_BOOLEAN" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Load into ODS Call Charges\SRC OLE DB ODS CALL CHARGES.Outputs[Sortie d'erreur de destination OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de destination OLE DB"
+                  synchronousInputId="Package\DFT Load into ODS Call Charges\SRC OLE DB ODS CALL CHARGES.Inputs[Entrée de destination OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Call Charges\SRC OLE DB ODS CALL CHARGES.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into ODS Call Charges\SRC OLE DB ODS CALL CHARGES.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Call Charges\SRC OLE DB ODS CALL CHARGES.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into ODS Call Charges\SRC OLE DB ODS CALL CHARGES.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Source OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;7"
+              description="Source OLE DB"
+              name="SRC OLE DB STA CALL CHARGES"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[dbo].[CALL_CHARGES]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable contenant la commande SQL à exécuter."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="Mappages entre les paramètres de la commande SQL et les variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[VICTUSJIM\SQLEXPRESS.SSIS_STA]"
+                  connectionManagerRefId="Package.ConnectionManagers[VICTUSJIM\SQLEXPRESS.SSIS_STA]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie de source OLE DB]"
+                  name="Sortie de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie de source OLE DB].Columns[Call Type Key]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie de source OLE DB].ExternalColumns[Call Type Key]"
+                      length="255"
+                      lineageId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie de source OLE DB].Columns[Call Type Key]"
+                      name="Call Type Key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie de source OLE DB].Columns[Call Type ]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie de source OLE DB].ExternalColumns[Call Type ]"
+                      length="255"
+                      lineageId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie de source OLE DB].Columns[Call Type ]"
+                      name="Call Type "
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie de source OLE DB].Columns[Call Charges (2018)]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie de source OLE DB].ExternalColumns[Call Charges (2018)]"
+                      length="255"
+                      lineageId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie de source OLE DB].Columns[Call Charges (2018)]"
+                      name="Call Charges (2018)"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie de source OLE DB].Columns[Call Charges (2019)]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie de source OLE DB].ExternalColumns[Call Charges (2019)]"
+                      length="255"
+                      lineageId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie de source OLE DB].Columns[Call Charges (2019)]"
+                      name="Call Charges (2019)"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie de source OLE DB].Columns[Call Charges (2020)]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie de source OLE DB].ExternalColumns[Call Charges (2020)]"
+                      length="255"
+                      lineageId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie de source OLE DB].Columns[Call Charges (2020)]"
+                      name="Call Charges (2020)"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie de source OLE DB].Columns[Call Charges (2021)]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie de source OLE DB].ExternalColumns[Call Charges (2021)]"
+                      length="255"
+                      lineageId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie de source OLE DB].Columns[Call Charges (2021)]"
+                      name="Call Charges (2021)"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie de source OLE DB].ExternalColumns[Call Type Key]"
+                      dataType="wstr"
+                      length="255"
+                      name="Call Type Key" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie de source OLE DB].ExternalColumns[Call Type ]"
+                      dataType="wstr"
+                      length="255"
+                      name="Call Type " />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie de source OLE DB].ExternalColumns[Call Charges (2018)]"
+                      dataType="wstr"
+                      length="255"
+                      name="Call Charges (2018)" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie de source OLE DB].ExternalColumns[Call Charges (2019)]"
+                      dataType="wstr"
+                      length="255"
+                      name="Call Charges (2019)" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie de source OLE DB].ExternalColumns[Call Charges (2020)]"
+                      dataType="wstr"
+                      length="255"
+                      name="Call Charges (2020)" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie de source OLE DB].ExternalColumns[Call Charges (2021)]"
+                      dataType="wstr"
+                      length="255"
+                      name="Call Charges (2021)" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie d'erreur de source OLE DB]"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie d'erreur de source OLE DB].Columns[Call Type Key]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie d'erreur de source OLE DB].Columns[Call Type Key]"
+                      name="Call Type Key" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie d'erreur de source OLE DB].Columns[Call Type ]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie d'erreur de source OLE DB].Columns[Call Type ]"
+                      name="Call Type " />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie d'erreur de source OLE DB].Columns[Call Charges (2018)]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie d'erreur de source OLE DB].Columns[Call Charges (2018)]"
+                      name="Call Charges (2018)" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie d'erreur de source OLE DB].Columns[Call Charges (2019)]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie d'erreur de source OLE DB].Columns[Call Charges (2019)]"
+                      name="Call Charges (2019)" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie d'erreur de source OLE DB].Columns[Call Charges (2020)]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie d'erreur de source OLE DB].Columns[Call Charges (2020)]"
+                      name="Call Charges (2020)" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie d'erreur de source OLE DB].Columns[Call Charges (2021)]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie d'erreur de source OLE DB].Columns[Call Charges (2021)]"
+                      name="Call Charges (2021)" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Load into ODS Call Charges\Tableau croisé dynamique"
+              componentClassID="Microsoft.Pivot"
+              contactInfo="Tableau croisé dynamique;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;1"
+              description="Compacte un flux de données d'entrée en le faisant pivoter sur une valeur de colonne, le rendant ainsi moins normalisé. Les données d'entrée doivent être triées d'après la colonne de tableau croisé dynamique, car un tableau croisé dynamique se produit chaque fois que des données changent dans la colonne de tableau croisé dynamique. Remarque : les lignes en double entraîneront l'échec de cette transformation."
+              name="Tableau croisé dynamique"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="La transformation Pivot ignore les lignes contenant des valeurs non reconnues dans la colonne Clé de tableau croisé dynamique et indique la liste complète de valeurs sans correspondance à l'issue de l'exécution de DataFlow. Utile pour collecter une liste de valeurs de lignes d'entrée pouvant être utilisées pour générer automatiquement les colonnes de sortie."
+                  name="PassThroughUnmatchedPivotKeys">false</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DFT Load into ODS Call Charges\Tableau croisé dynamique.Inputs[Entrée croisée dynamique par défaut]"
+                  hasSideEffects="true"
+                  name="Entrée croisée dynamique par défaut">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Call Charges\Tableau croisé dynamique.Inputs[Entrée croisée dynamique par défaut].Columns[Call Type Key]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Call Type Key"
+                      lineageId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie de source OLE DB].Columns[Call Type Key]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Décrit la manière dont la colonne d'entrée participe à l'opération croisée dynamique. Elle peut aider à définir un ensemble d'enregistrements correspondants. Elle peut contenir la clé identifiant de manière unique la ligne au sein de l'ensemble correspondant et sur laquelle les valeurs sont croisées dynamiquement. Elle peut contenir une valeur qui se trouve transférée dans une colonne croisée dynamique, ou qui passe simplement dans le champ dynamique sans être modifiée."
+                          name="PivotUsage">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Call Charges\Tableau croisé dynamique.Inputs[Entrée croisée dynamique par défaut].Columns[Call Type ]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Call Type "
+                      lineageId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie de source OLE DB].Columns[Call Type ]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Décrit la manière dont la colonne d'entrée participe à l'opération croisée dynamique. Elle peut aider à définir un ensemble d'enregistrements correspondants. Elle peut contenir la clé identifiant de manière unique la ligne au sein de l'ensemble correspondant et sur laquelle les valeurs sont croisées dynamiquement. Elle peut contenir une valeur qui se trouve transférée dans une colonne croisée dynamique, ou qui passe simplement dans le champ dynamique sans être modifiée."
+                          name="PivotUsage">2</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Load into ODS Call Charges\Tableau croisé dynamique.Outputs[Sortie croisée dynamique par défaut]"
+                  name="Sortie croisée dynamique par défaut">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Call Charges\Tableau croisé dynamique.Outputs[Sortie croisée dynamique par défaut].Columns[Call Type Key]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT Load into ODS Call Charges\Tableau croisé dynamique.Outputs[Sortie croisée dynamique par défaut].Columns[Call Type Key]"
+                      name="Call Type Key">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificateur de traçabilité d'une colonne d'entrée contenant la valeur PivotedValue ou la valeur -1. Cette dernière indique que la colonne n'est pas utilisée dans une opération croisée dynamique."
+                          name="SourceColumn">#{Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie de source OLE DB].Columns[Call Type Key]}</property>
+                        <property
+                          dataType="System.Null"
+                          description="Spécifie une valeur correspondant à une des valeurs possibles de la colonne d'entrée marquée en tant que clé de tableau croisé dynamique par la propriété PivotUsage."
+                          expressionType="Notify"
+                          name="PivotKeyValue" />
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Call Charges\Tableau croisé dynamique.Outputs[Sortie croisée dynamique par défaut].Columns[C_Call Charges (2018)_BOOLEAN]"
+                      dataType="bool"
+                      lineageId="Package\DFT Load into ODS Call Charges\Tableau croisé dynamique.Outputs[Sortie croisée dynamique par défaut].Columns[C_Call Charges (2018)_BOOLEAN]"
+                      name="C_Call Charges (2018)_BOOLEAN">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificateur de traçabilité d'une colonne d'entrée contenant la valeur PivotedValue ou la valeur -1. Cette dernière indique que la colonne n'est pas utilisée dans une opération croisée dynamique."
+                          name="SourceColumn">#{Package\DFT Load into ODS Call Charges\-1:invalid}</property>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie une valeur correspondant à une des valeurs possibles de la colonne d'entrée marquée en tant que clé de tableau croisé dynamique par la propriété PivotUsage."
+                          expressionType="Notify"
+                          name="PivotKeyValue">Call Charges (2018)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Call Charges\Tableau croisé dynamique.Outputs[Sortie croisée dynamique par défaut].Columns[C_Call Charges (2019)_BOOLEAN]"
+                      dataType="bool"
+                      lineageId="Package\DFT Load into ODS Call Charges\Tableau croisé dynamique.Outputs[Sortie croisée dynamique par défaut].Columns[C_Call Charges (2019)_BOOLEAN]"
+                      name="C_Call Charges (2019)_BOOLEAN">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificateur de traçabilité d'une colonne d'entrée contenant la valeur PivotedValue ou la valeur -1. Cette dernière indique que la colonne n'est pas utilisée dans une opération croisée dynamique."
+                          name="SourceColumn">#{Package\DFT Load into ODS Call Charges\-1:invalid}</property>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie une valeur correspondant à une des valeurs possibles de la colonne d'entrée marquée en tant que clé de tableau croisé dynamique par la propriété PivotUsage."
+                          expressionType="Notify"
+                          name="PivotKeyValue">Call Charges (2019)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Call Charges\Tableau croisé dynamique.Outputs[Sortie croisée dynamique par défaut].Columns[C_Call Charges (2020)_BOOLEAN]"
+                      dataType="bool"
+                      lineageId="Package\DFT Load into ODS Call Charges\Tableau croisé dynamique.Outputs[Sortie croisée dynamique par défaut].Columns[C_Call Charges (2020)_BOOLEAN]"
+                      name="C_Call Charges (2020)_BOOLEAN">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificateur de traçabilité d'une colonne d'entrée contenant la valeur PivotedValue ou la valeur -1. Cette dernière indique que la colonne n'est pas utilisée dans une opération croisée dynamique."
+                          name="SourceColumn">#{Package\DFT Load into ODS Call Charges\-1:invalid}</property>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie une valeur correspondant à une des valeurs possibles de la colonne d'entrée marquée en tant que clé de tableau croisé dynamique par la propriété PivotUsage."
+                          expressionType="Notify"
+                          name="PivotKeyValue">Call Charges (2020)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Call Charges\Tableau croisé dynamique.Outputs[Sortie croisée dynamique par défaut].Columns[C_Call Charges (2021)_BOOLEAN]"
+                      dataType="bool"
+                      lineageId="Package\DFT Load into ODS Call Charges\Tableau croisé dynamique.Outputs[Sortie croisée dynamique par défaut].Columns[C_Call Charges (2021)_BOOLEAN]"
+                      name="C_Call Charges (2021)_BOOLEAN">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Identificateur de traçabilité d'une colonne d'entrée contenant la valeur PivotedValue ou la valeur -1. Cette dernière indique que la colonne n'est pas utilisée dans une opération croisée dynamique."
+                          name="SourceColumn">#{Package\DFT Load into ODS Call Charges\-1:invalid}</property>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie une valeur correspondant à une des valeurs possibles de la colonne d'entrée marquée en tant que clé de tableau croisé dynamique par la propriété PivotUsage."
+                          expressionType="Notify"
+                          name="PivotKeyValue">Call Charges (2021)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT Load into ODS Call Charges\Tableau croisé dynamique.Outputs[Sortie d'erreur de tableau croisé dynamique]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de tableau croisé dynamique"
+                  synchronousInputId="Package\DFT Load into ODS Call Charges\Tableau croisé dynamique.Inputs[Entrée croisée dynamique par défaut]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Call Charges\Tableau croisé dynamique.Outputs[Sortie d'erreur de tableau croisé dynamique].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into ODS Call Charges\Tableau croisé dynamique.Outputs[Sortie d'erreur de tableau croisé dynamique].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Call Charges\Tableau croisé dynamique.Outputs[Sortie d'erreur de tableau croisé dynamique].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into ODS Call Charges\Tableau croisé dynamique.Outputs[Sortie d'erreur de tableau croisé dynamique].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT Load into ODS Call Charges.Paths[Sortie croisée dynamique par défaut]"
+              endId="Package\DFT Load into ODS Call Charges\SRC OLE DB ODS CALL CHARGES.Inputs[Entrée de destination OLE DB]"
+              name="Sortie croisée dynamique par défaut"
+              startId="Package\DFT Load into ODS Call Charges\Tableau croisé dynamique.Outputs[Sortie croisée dynamique par défaut]" />
+            <path
+              refId="Package\DFT Load into ODS Call Charges.Paths[Sortie de source OLE DB]"
+              endId="Package\DFT Load into ODS Call Charges\Tableau croisé dynamique.Inputs[Entrée croisée dynamique par défaut]"
+              name="Sortie de source OLE DB"
+              startId="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES.Outputs[Sortie de source OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Empty ODS Call Charges PIVOT"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tâche d'exécution de requêtes SQL"
+      DTS:DTSID="{8A4B15D0-2292-4044-B57F-AD323AE9F8A3}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Empty ODS Call Charges PIVOT"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022 CTP2.0; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{8227D67F-FDE1-4B74-95E7-F23D60C9941E}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE ODS_CALLCHARGES;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{BA794CBD-C2E0-46DB-ACE7-022803918AD2}"
+      DTS:From="Package\SQL - Empty ODS Call Charges PIVOT"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DFT Load into ODS Call Charges" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="232,41.6"
+          Id="Package\DFT Load into ODS Call Charges"
+          TopLeft="211.666658255789,220.133335082796" />
+        <NodeLayout
+          Size="260,41.6"
+          Id="Package\SQL - Empty ODS Call Charges PIVOT"
+          TopLeft="173.333326445686,137.800001095136" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="303.333326445686,179.400001095136">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="24.3333318101035,40.7333339876599"
+              Start="0,0"
+              End="24.3333318101035,33.2333339876599">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.36666699383" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.36666699383"
+                    Point2="0,20.36666699383"
+                    Point3="4,20.36666699383" />
+                  <mssgle:LineSegment
+                    End="20.3333318101035,20.36666699383" />
+                  <mssgle:CubicBezierSegment
+                    Point1="20.3333318101035,20.36666699383"
+                    Point2="24.3333318101035,20.36666699383"
+                    Point3="24.3333318101035,24.36666699383" />
+                  <mssgle:LineSegment
+                    End="24.3333318101035,33.2333339876599" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT Load into ODS Call Charges">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="247.2,41.6"
+          Id="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES"
+          TopLeft="331.666653487418,49.4000003925959" />
+        <NodeLayout
+          Size="200,41.6"
+          Id="Package\DFT Load into ODS Call Charges\Tableau croisé dynamique"
+          TopLeft="282.499988774459,141.266667789353" />
+        <EdgeLayout
+          Id="Package\DFT Load into ODS Call Charges.Paths[Sortie de source OLE DB]"
+          TopLeft="455.266653487418,91.000000392596">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-72.766664712959,50.2666673967573"
+              Start="0,0"
+              End="-72.766664712959,42.7666673967573">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.1333336983787" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.1333336983787"
+                    Point2="0,25.1333336983787"
+                    Point3="-4,25.1333336983787" />
+                  <mssgle:LineSegment
+                    End="-68.766664712959,25.1333336983787" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-68.766664712959,25.1333336983787"
+                    Point2="-72.766664712959,25.1333336983787"
+                    Point3="-72.766664712959,29.1333336983787" />
+                  <mssgle:LineSegment
+                    End="-72.766664712959,42.7666673967573" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="249.6,41.6"
+          Id="Package\DFT Load into ODS Call Charges\SRC OLE DB ODS CALL CHARGES"
+          TopLeft="278.333322273361,225.333335124122" />
+        <EdgeLayout
+          Id="Package\DFT Load into ODS Call Charges.Paths[Sortie croisée dynamique par défaut]"
+          TopLeft="382.499988774459,182.866667789353">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="20.6333334989018,42.4666673347685"
+              Start="0,0"
+              End="20.6333334989018,34.9666673347685">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.2333336673843" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.2333336673843"
+                    Point2="0,21.2333336673843"
+                    Point3="4,21.2333336673843" />
+                  <mssgle:LineSegment
+                    End="16.6333334989018,21.2333336673843" />
+                  <mssgle:CubicBezierSegment
+                    Point1="16.6333334989018,21.2333336673843"
+                    Point2="20.6333334989018,21.2333336673843"
+                    Point3="20.6333334989018,25.2333336673843" />
+                  <mssgle:LineSegment
+                    End="20.6333334989018,34.9666673347685" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Load into ODS Call Charges\SRC OLE DB STA CALL CHARGES">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Load into ODS Call Charges\SRC OLE DB ODS CALL CHARGES">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

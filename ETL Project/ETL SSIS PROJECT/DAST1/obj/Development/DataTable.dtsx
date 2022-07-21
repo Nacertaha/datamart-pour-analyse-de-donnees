@@ -1,0 +1,694 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/12/2022 11:39:57 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="VICTUSJIM"
+  DTS:CreatorName="VICTUSJIM\dmwag"
+  DTS:DTSID="{F47637E8-039F-4DE5-A9DC-7429FF9EF0D7}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.521.0"
+  DTS:LocaleID="1036"
+  DTS:ObjectName="DataTable"
+  DTS:PackageType="5"
+  DTS:VersionBuild="23"
+  DTS:VersionGUID="{53DABFD6-CA0B-4E1C-A966-168203C7A431}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[VICTUSJIM\SQLEXPRESS.SSIS_ODS]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{A0AD90CC-15EF-475F-A3C5-86462E49D59D}"
+      DTS:ObjectName="VICTUSJIM\SQLEXPRESS.SSIS_ODS">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=VICTUSJIM\SQLEXPRESS;Initial Catalog=SSIS_ODS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[VICTUSJIM\SQLEXPRESS.SSIS_STA]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{977A742F-02F7-4DC1-866A-C1838F185788}"
+      DTS:ObjectName="VICTUSJIM\SQLEXPRESS.SSIS_STA">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=VICTUSJIM\SQLEXPRESS;Initial Catalog=SSIS_STA;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT Load into ODS Data Table"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tâche de flux de données"
+      DTS:DTSID="{8D72430A-C82B-4E51-9E8E-6B8A395C61CD}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT Load into ODS Data Table"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Source OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;7"
+              description="Source OLE DB"
+              name="SRC OLE DB DATA TABLE CREATE"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[dbo].[DATATABLE]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable contenant la commande SQL à exécuter."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="Mappages entre les paramètres de la commande SQL et les variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[VICTUSJIM\SQLEXPRESS.SSIS_STA]"
+                  connectionManagerRefId="Package.ConnectionManagers[VICTUSJIM\SQLEXPRESS.SSIS_STA]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB]"
+                  name="Sortie de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].Columns[DateID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].ExternalColumns[DateID]"
+                      lineageId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].Columns[DateID]"
+                      name="DateID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].Columns[MonthName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].ExternalColumns[MonthName]"
+                      length="9"
+                      lineageId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].Columns[MonthName]"
+                      name="MonthName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].Columns[MonthNumber]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].ExternalColumns[MonthNumber]"
+                      lineageId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].Columns[MonthNumber]"
+                      name="MonthNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].Columns[DayNumber]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].ExternalColumns[DayNumber]"
+                      lineageId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].Columns[DayNumber]"
+                      name="DayNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].Columns[DayName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].ExternalColumns[DayName]"
+                      length="9"
+                      lineageId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].Columns[DayName]"
+                      name="DayName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].Columns[Quarter]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].ExternalColumns[Quarter]"
+                      lineageId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].Columns[Quarter]"
+                      name="Quarter"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].Columns[QuarterName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].ExternalColumns[QuarterName]"
+                      length="7"
+                      lineageId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].Columns[QuarterName]"
+                      name="QuarterName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].Columns[Year]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].ExternalColumns[Year]"
+                      lineageId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].Columns[Year]"
+                      name="Year"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].Columns[FullDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].ExternalColumns[FullDate]"
+                      lineageId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].Columns[FullDate]"
+                      name="FullDate"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].ExternalColumns[DateID]"
+                      dataType="i4"
+                      name="DateID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].ExternalColumns[MonthName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="9"
+                      name="MonthName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].ExternalColumns[MonthNumber]"
+                      dataType="i4"
+                      name="MonthNumber" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].ExternalColumns[DayNumber]"
+                      dataType="i4"
+                      name="DayNumber" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].ExternalColumns[DayName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="9"
+                      name="DayName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].ExternalColumns[Quarter]"
+                      dataType="i4"
+                      name="Quarter" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].ExternalColumns[QuarterName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="QuarterName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].ExternalColumns[Year]"
+                      dataType="i4"
+                      name="Year" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].ExternalColumns[FullDate]"
+                      dataType="dbTimeStamp"
+                      name="FullDate" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie d'erreur de source OLE DB]"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie d'erreur de source OLE DB].Columns[DateID]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie d'erreur de source OLE DB].Columns[DateID]"
+                      name="DateID" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie d'erreur de source OLE DB].Columns[MonthName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="9"
+                      lineageId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie d'erreur de source OLE DB].Columns[MonthName]"
+                      name="MonthName" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie d'erreur de source OLE DB].Columns[MonthNumber]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie d'erreur de source OLE DB].Columns[MonthNumber]"
+                      name="MonthNumber" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie d'erreur de source OLE DB].Columns[DayNumber]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie d'erreur de source OLE DB].Columns[DayNumber]"
+                      name="DayNumber" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie d'erreur de source OLE DB].Columns[DayName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="9"
+                      lineageId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie d'erreur de source OLE DB].Columns[DayName]"
+                      name="DayName" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie d'erreur de source OLE DB].Columns[Quarter]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie d'erreur de source OLE DB].Columns[Quarter]"
+                      name="Quarter" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie d'erreur de source OLE DB].Columns[QuarterName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      lineageId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie d'erreur de source OLE DB].Columns[QuarterName]"
+                      name="QuarterName" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie d'erreur de source OLE DB].Columns[Year]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie d'erreur de source OLE DB].Columns[Year]"
+                      name="Year" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie d'erreur de source OLE DB].Columns[FullDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie d'erreur de source OLE DB].Columns[FullDate]"
+                      name="FullDate" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Load into ODS Data Table\SRC OLE DB ODS DATA TABLE"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destination OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;4"
+              description="Destination OLE DB"
+              name="SRC OLE DB ODS DATA TABLE"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[dbo].[DATATABLE]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les valeurs fournies pour les colonnes d'identité seront copiées à la destination. Si la valeur est définie à False, les valeurs des colonnes d'identité seront générées automatiquement à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les colonnes contenant la valeur NULL auront cette valeur NULL copiée à la destination. Si la valeur est définie à False, les colonnes contenant la valeur NULL auront leurs valeurs par défaut insérées à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie les options à utiliser avec le chargement rapide.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie quand les validations sont émises pendant l'insertion des données.  Une valeur égale à 0 spécifie qu'une validation sera émise à la fin de l'insertion des données.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT Load into ODS Data Table\SRC OLE DB ODS DATA TABLE.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[VICTUSJIM\SQLEXPRESS.SSIS_ODS]"
+                  connectionManagerRefId="Package.ConnectionManagers[VICTUSJIM\SQLEXPRESS.SSIS_ODS]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT Load into ODS Data Table\SRC OLE DB ODS DATA TABLE.Inputs[Entrée de destination OLE DB]"
+                  errorOrTruncationOperation="Insérer"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrée de destination OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB ODS DATA TABLE.Inputs[Entrée de destination OLE DB].Columns[DateID]"
+                      cachedDataType="i4"
+                      cachedName="DateID"
+                      externalMetadataColumnId="Package\DFT Load into ODS Data Table\SRC OLE DB ODS DATA TABLE.Inputs[Entrée de destination OLE DB].ExternalColumns[DateID]"
+                      lineageId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].Columns[DateID]" />
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB ODS DATA TABLE.Inputs[Entrée de destination OLE DB].Columns[MonthName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="9"
+                      cachedName="MonthName"
+                      externalMetadataColumnId="Package\DFT Load into ODS Data Table\SRC OLE DB ODS DATA TABLE.Inputs[Entrée de destination OLE DB].ExternalColumns[MonthName]"
+                      lineageId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].Columns[MonthName]" />
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB ODS DATA TABLE.Inputs[Entrée de destination OLE DB].Columns[MonthNumber]"
+                      cachedDataType="i4"
+                      cachedName="MonthNumber"
+                      externalMetadataColumnId="Package\DFT Load into ODS Data Table\SRC OLE DB ODS DATA TABLE.Inputs[Entrée de destination OLE DB].ExternalColumns[MonthNumber]"
+                      lineageId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].Columns[MonthNumber]" />
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB ODS DATA TABLE.Inputs[Entrée de destination OLE DB].Columns[DayNumber]"
+                      cachedDataType="i4"
+                      cachedName="DayNumber"
+                      externalMetadataColumnId="Package\DFT Load into ODS Data Table\SRC OLE DB ODS DATA TABLE.Inputs[Entrée de destination OLE DB].ExternalColumns[DayNumber]"
+                      lineageId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].Columns[DayNumber]" />
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB ODS DATA TABLE.Inputs[Entrée de destination OLE DB].Columns[DayName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="9"
+                      cachedName="DayName"
+                      externalMetadataColumnId="Package\DFT Load into ODS Data Table\SRC OLE DB ODS DATA TABLE.Inputs[Entrée de destination OLE DB].ExternalColumns[DayName]"
+                      lineageId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].Columns[DayName]" />
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB ODS DATA TABLE.Inputs[Entrée de destination OLE DB].Columns[Quarter]"
+                      cachedDataType="i4"
+                      cachedName="Quarter"
+                      externalMetadataColumnId="Package\DFT Load into ODS Data Table\SRC OLE DB ODS DATA TABLE.Inputs[Entrée de destination OLE DB].ExternalColumns[Quarter]"
+                      lineageId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].Columns[Quarter]" />
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB ODS DATA TABLE.Inputs[Entrée de destination OLE DB].Columns[QuarterName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="7"
+                      cachedName="QuarterName"
+                      externalMetadataColumnId="Package\DFT Load into ODS Data Table\SRC OLE DB ODS DATA TABLE.Inputs[Entrée de destination OLE DB].ExternalColumns[QuarterName]"
+                      lineageId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].Columns[QuarterName]" />
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB ODS DATA TABLE.Inputs[Entrée de destination OLE DB].Columns[Year]"
+                      cachedDataType="i4"
+                      cachedName="Year"
+                      externalMetadataColumnId="Package\DFT Load into ODS Data Table\SRC OLE DB ODS DATA TABLE.Inputs[Entrée de destination OLE DB].ExternalColumns[Year]"
+                      lineageId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].Columns[Year]" />
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB ODS DATA TABLE.Inputs[Entrée de destination OLE DB].Columns[FullDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="FullDate"
+                      externalMetadataColumnId="Package\DFT Load into ODS Data Table\SRC OLE DB ODS DATA TABLE.Inputs[Entrée de destination OLE DB].ExternalColumns[FullDate]"
+                      lineageId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB].Columns[FullDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB ODS DATA TABLE.Inputs[Entrée de destination OLE DB].ExternalColumns[DateID]"
+                      dataType="i4"
+                      name="DateID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB ODS DATA TABLE.Inputs[Entrée de destination OLE DB].ExternalColumns[MonthName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="9"
+                      name="MonthName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB ODS DATA TABLE.Inputs[Entrée de destination OLE DB].ExternalColumns[MonthNumber]"
+                      dataType="i4"
+                      name="MonthNumber" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB ODS DATA TABLE.Inputs[Entrée de destination OLE DB].ExternalColumns[DayNumber]"
+                      dataType="i4"
+                      name="DayNumber" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB ODS DATA TABLE.Inputs[Entrée de destination OLE DB].ExternalColumns[DayName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="9"
+                      name="DayName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB ODS DATA TABLE.Inputs[Entrée de destination OLE DB].ExternalColumns[Quarter]"
+                      dataType="i4"
+                      name="Quarter" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB ODS DATA TABLE.Inputs[Entrée de destination OLE DB].ExternalColumns[QuarterName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="QuarterName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB ODS DATA TABLE.Inputs[Entrée de destination OLE DB].ExternalColumns[Year]"
+                      dataType="i4"
+                      name="Year" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB ODS DATA TABLE.Inputs[Entrée de destination OLE DB].ExternalColumns[FullDate]"
+                      dataType="dbTimeStamp"
+                      name="FullDate" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Load into ODS Data Table\SRC OLE DB ODS DATA TABLE.Outputs[Sortie d'erreur de destination OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de destination OLE DB"
+                  synchronousInputId="Package\DFT Load into ODS Data Table\SRC OLE DB ODS DATA TABLE.Inputs[Entrée de destination OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB ODS DATA TABLE.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into ODS Data Table\SRC OLE DB ODS DATA TABLE.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Data Table\SRC OLE DB ODS DATA TABLE.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into ODS Data Table\SRC OLE DB ODS DATA TABLE.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT Load into ODS Data Table.Paths[Sortie de source OLE DB]"
+              endId="Package\DFT Load into ODS Data Table\SRC OLE DB ODS DATA TABLE.Inputs[Entrée de destination OLE DB]"
+              name="Sortie de source OLE DB"
+              startId="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE.Outputs[Sortie de source OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Empty ODS Data Table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tâche d'exécution de requêtes SQL"
+      DTS:DTSID="{0B1BADB9-AE64-4CB6-8354-8878630A15A6}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Empty ODS Data Table"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022 CTP2.0; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A0AD90CC-15EF-475F-A3C5-86462E49D59D}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE DATETABLE;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{4ABB5F75-C0C0-4BED-88F8-B3DFABD17DE2}"
+      DTS:From="Package\SQL - Empty ODS Data Table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DFT Load into ODS Data Table" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="223.2,41.6"
+          Id="Package\DFT Load into ODS Data Table"
+          TopLeft="319.999987284343,203.666668285264" />
+        <NodeLayout
+          Size="216.8,41.6"
+          Id="Package\SQL - Empty ODS Data Table"
+          TopLeft="311.666654282147,107.466667520735" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="420.066654282147,149.066667520735">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="11.5333330021959,54.600000764529"
+              Start="0,0"
+              End="11.5333330021959,47.100000764529">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.3000003822645" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.3000003822645"
+                    Point2="0,27.3000003822645"
+                    Point3="4,27.3000003822645" />
+                  <mssgle:LineSegment
+                    End="7.53333300219595,27.3000003822645" />
+                  <mssgle:CubicBezierSegment
+                    Point1="7.53333300219595,27.3000003822645"
+                    Point2="11.5333330021959,27.3000003822645"
+                    Point3="11.5333330021959,31.3000003822645" />
+                  <mssgle:LineSegment
+                    End="11.5333330021959,47.100000764529" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT Load into ODS Data Table">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="232.8,41.6"
+          Id="Package\DFT Load into ODS Data Table\SRC OLE DB ODS DATA TABLE"
+          TopLeft="388,236" />
+        <NodeLayout
+          Size="252,41.6"
+          Id="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE"
+          TopLeft="383,122" />
+        <EdgeLayout
+          Id="Package\DFT Load into ODS Data Table.Paths[Sortie de source OLE DB]"
+          TopLeft="506.7,163.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,72.4"
+              Start="0,0"
+              End="0,64.9">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,64.9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Load into ODS Data Table\SRC OLE DB DATA TABLE CREATE">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Load into ODS Data Table\SRC OLE DB ODS DATA TABLE">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

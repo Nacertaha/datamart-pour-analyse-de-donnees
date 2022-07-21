@@ -1,0 +1,2270 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/13/2022 12:13:11 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="VICTUSJIM"
+  DTS:CreatorName="VICTUSJIM\dmwag"
+  DTS:DTSID="{B82BD8FE-43A9-4EE0-BC3E-76B5991DFC5E}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.521.0"
+  DTS:LocaleID="1036"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="13"
+  DTS:VersionGUID="{3AB3E7FE-F473-4242-A070-607CB1EC2B75}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[VICTUSJIM\SQLEXPRESS.SSIS_ODS]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{17517CD4-7C1F-4514-8773-06793D93944C}"
+      DTS:ObjectName="VICTUSJIM\SQLEXPRESS.SSIS_ODS">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=VICTUSJIM\SQLEXPRESS;Initial Catalog=SSIS_ODS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[VICTUSJIM\SQLEXPRESS.SSIS_STA]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{F684F30E-6388-48AC-BBD9-CB419BA69DE8}"
+      DTS:ObjectName="VICTUSJIM\SQLEXPRESS.SSIS_STA">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=VICTUSJIM\SQLEXPRESS;Initial Catalog=SSIS_STA;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT - Load into ODS Data"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tâche de flux de données"
+      DTS:DTSID="{B0B252ED-F9C4-4036-AC1B-4A23EDE77A85}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT - Load into ODS Data"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT - Load into ODS Data\Conversion de données"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Conversion de données;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;0"
+              description="Conversion de données"
+              name="Conversion de données"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT - Load into ODS Data\Conversion de données.Inputs[Entrée de conversion de données]"
+                  name="Entrée de conversion de données">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Load into ODS Data\Conversion de données.Inputs[Entrée de conversion de données].Columns[Date]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Date"
+                      lineageId="Package\DFT - Load into ODS Data\DER - SPLIT Colonne Date.Outputs[Sortie de colonne dérivée].Columns[Date]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load into ODS Data\Conversion de données.Outputs[Sortie de conversion de données]"
+                  exclusionGroup="1"
+                  name="Sortie de conversion de données"
+                  synchronousInputId="Package\DFT - Load into ODS Data\Conversion de données.Inputs[Entrée de conversion de données]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\Conversion de données.Outputs[Sortie de conversion de données].Columns[Date_DT]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT - Load into ODS Data\Conversion de données.Outputs[Sortie de conversion de données].Columns[Date_DT]"
+                      name="Date_DT"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie la colonne d'entrée utilisée comme source de données pour la conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT - Load into ODS Data\DER - SPLIT Colonne Date.Outputs[Sortie de colonne dérivée].Columns[Date]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT - Load into ODS Data\Conversion de données.Outputs[Sortie d'erreur de conversion de données]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de conversion de données"
+                  synchronousInputId="Package\DFT - Load into ODS Data\Conversion de données.Inputs[Entrée de conversion de données]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\Conversion de données.Outputs[Sortie d'erreur de conversion de données].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load into ODS Data\Conversion de données.Outputs[Sortie d'erreur de conversion de données].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\Conversion de données.Outputs[Sortie d'erreur de conversion de données].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load into ODS Data\Conversion de données.Outputs[Sortie d'erreur de conversion de données].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Load into ODS Data\DER - SPLIT Add Date"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Colonne dérivée;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;0"
+              description="Crée de nouvelles valeurs de colonne en appliquant des expressions aux colonnes d'entrée de transformation. Créez de nouvelles colonnes ou remplacez celles qui existent déjà. Par exemple, concaténez les valeurs de la colonne 'prénom' et de la colonne 'nom' pour créer une colonne 'nom complet'."
+              name="DER - SPLIT Add Date"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT - Load into ODS Data\DER - SPLIT Add Date.Inputs[Entrée de colonne dérivée]"
+                  description="Entrée de la transformation de colonnes dérivées"
+                  name="Entrée de colonne dérivée">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Load into ODS Data\DER - SPLIT Add Date.Inputs[Entrée de colonne dérivée].Columns[Date_DT]"
+                      cachedDataType="date"
+                      cachedName="Date_DT"
+                      lineageId="Package\DFT - Load into ODS Data\Conversion de données.Outputs[Sortie de conversion de données].Columns[Date_DT]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load into ODS Data\DER - SPLIT Add Date.Outputs[Sortie de colonne dérivée]"
+                  description="Sortie par défaut de la transformation de colonnes dérivées"
+                  exclusionGroup="1"
+                  name="Sortie de colonne dérivée"
+                  synchronousInputId="Package\DFT - Load into ODS Data\DER - SPLIT Add Date.Inputs[Entrée de colonne dérivée]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\DER - SPLIT Add Date.Outputs[Sortie de colonne dérivée].Columns[Month]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Calcul"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT - Load into ODS Data\DER - SPLIT Add Date.Outputs[Sortie de colonne dérivée].Columns[Month]"
+                      name="Month"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression de colonne dérivée"
+                          name="Expression">[MONTH](#{Package\DFT - Load into ODS Data\Conversion de données.Outputs[Sortie de conversion de données].Columns[Date_DT]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression claire de colonne dérivée"
+                          expressionType="Notify"
+                          name="FriendlyExpression">MONTH(Date_DT)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\DER - SPLIT Add Date.Outputs[Sortie de colonne dérivée].Columns[Year]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Calcul"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT - Load into ODS Data\DER - SPLIT Add Date.Outputs[Sortie de colonne dérivée].Columns[Year]"
+                      name="Year"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression de colonne dérivée"
+                          name="Expression">[YEAR](#{Package\DFT - Load into ODS Data\Conversion de données.Outputs[Sortie de conversion de données].Columns[Date_DT]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression claire de colonne dérivée"
+                          expressionType="Notify"
+                          name="FriendlyExpression">YEAR(Date_DT)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT - Load into ODS Data\DER - SPLIT Add Date.Outputs[Sortie d'erreur de colonne dérivée]"
+                  description="Sortie d'erreur de la transformation de colonnes dérivées"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de colonne dérivée"
+                  synchronousInputId="Package\DFT - Load into ODS Data\DER - SPLIT Add Date.Inputs[Entrée de colonne dérivée]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\DER - SPLIT Add Date.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load into ODS Data\DER - SPLIT Add Date.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\DER - SPLIT Add Date.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load into ODS Data\DER - SPLIT Add Date.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Load into ODS Data\DER - SPLIT Colonne Date"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Colonne dérivée;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;0"
+              description="Crée de nouvelles valeurs de colonne en appliquant des expressions aux colonnes d'entrée de transformation. Créez de nouvelles colonnes ou remplacez celles qui existent déjà. Par exemple, concaténez les valeurs de la colonne 'prénom' et de la colonne 'nom' pour créer une colonne 'nom complet'."
+              name="DER - SPLIT Colonne Date"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT - Load into ODS Data\DER - SPLIT Colonne Date.Inputs[Entrée de colonne dérivée]"
+                  description="Entrée de la transformation de colonnes dérivées"
+                  name="Entrée de colonne dérivée">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Load into ODS Data\DER - SPLIT Colonne Date.Inputs[Entrée de colonne dérivée].Columns[CallTimestamp]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CallTimestamp"
+                      lineageId="Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[CallTimestamp]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load into ODS Data\DER - SPLIT Colonne Date.Outputs[Sortie de colonne dérivée]"
+                  description="Sortie par défaut de la transformation de colonnes dérivées"
+                  exclusionGroup="1"
+                  name="Sortie de colonne dérivée"
+                  synchronousInputId="Package\DFT - Load into ODS Data\DER - SPLIT Colonne Date.Inputs[Entrée de colonne dérivée]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\DER - SPLIT Colonne Date.Outputs[Sortie de colonne dérivée].Columns[Date]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Calcul"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\DER - SPLIT Colonne Date.Outputs[Sortie de colonne dérivée].Columns[Date]"
+                      name="Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression de colonne dérivée"
+                          name="Expression">[SUBSTRING](#{Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[CallTimestamp]},1,[LEN](#{Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[CallTimestamp]}) - [FINDSTRING]([REVERSE](#{Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[CallTimestamp]})," ",1) - 1)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression claire de colonne dérivée"
+                          expressionType="Notify"
+                          name="FriendlyExpression">SUBSTRING(CallTimestamp,1,LEN(CallTimestamp) - FINDSTRING(REVERSE(CallTimestamp)," ",1) - 1)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT - Load into ODS Data\DER - SPLIT Colonne Date.Outputs[Sortie d'erreur de colonne dérivée]"
+                  description="Sortie d'erreur de la transformation de colonnes dérivées"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de colonne dérivée"
+                  synchronousInputId="Package\DFT - Load into ODS Data\DER - SPLIT Colonne Date.Inputs[Entrée de colonne dérivée]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\DER - SPLIT Colonne Date.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load into ODS Data\DER - SPLIT Colonne Date.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\DER - SPLIT Colonne Date.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load into ODS Data\DER - SPLIT Colonne Date.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Load into ODS Data\Destination OLE DB"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destination OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;4"
+              description="Destination OLE DB"
+              name="Destination OLE DB"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[ALLDATA]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les valeurs fournies pour les colonnes d'identité seront copiées à la destination. Si la valeur est définie à False, les valeurs des colonnes d'identité seront générées automatiquement à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les colonnes contenant la valeur NULL auront cette valeur NULL copiée à la destination. Si la valeur est définie à False, les colonnes contenant la valeur NULL auront leurs valeurs par défaut insérées à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie les options à utiliser avec le chargement rapide.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie quand les validations sont émises pendant l'insertion des données.  Une valeur égale à 0 spécifie qu'une validation sera émise à la fin de l'insertion des données.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Load into ODS Data\Destination OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[VICTUSJIM\SQLEXPRESS.SSIS_ODS]"
+                  connectionManagerRefId="Package.ConnectionManagers[VICTUSJIM\SQLEXPRESS.SSIS_ODS]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT - Load into ODS Data\Destination OLE DB.Inputs[Entrée de destination OLE DB]"
+                  errorOrTruncationOperation="Insérer"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrée de destination OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Load into ODS Data\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[CallTimestamp]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CallTimestamp"
+                      externalMetadataColumnId="Package\DFT - Load into ODS Data\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[CallTimestamp]"
+                      lineageId="Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[CallTimestamp]" />
+                    <inputColumn
+                      refId="Package\DFT - Load into ODS Data\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[Call Type]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Call Type"
+                      externalMetadataColumnId="Package\DFT - Load into ODS Data\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Call Type]"
+                      lineageId="Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[Call Type]" />
+                    <inputColumn
+                      refId="Package\DFT - Load into ODS Data\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[EmployeeID]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="EmployeeID"
+                      externalMetadataColumnId="Package\DFT - Load into ODS Data\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[EmployeeID]"
+                      lineageId="Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[EmployeeID]" />
+                    <inputColumn
+                      refId="Package\DFT - Load into ODS Data\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[CallDuration]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CallDuration"
+                      externalMetadataColumnId="Package\DFT - Load into ODS Data\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[CallDuration]"
+                      lineageId="Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[CallDuration]" />
+                    <inputColumn
+                      refId="Package\DFT - Load into ODS Data\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[WaitTime]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="WaitTime"
+                      externalMetadataColumnId="Package\DFT - Load into ODS Data\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[WaitTime]"
+                      lineageId="Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[WaitTime]" />
+                    <inputColumn
+                      refId="Package\DFT - Load into ODS Data\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[CallAbandoned]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CallAbandoned"
+                      externalMetadataColumnId="Package\DFT - Load into ODS Data\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[CallAbandoned]"
+                      lineageId="Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[CallAbandoned]" />
+                    <inputColumn
+                      refId="Package\DFT - Load into ODS Data\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[Date_DT]"
+                      cachedDataType="date"
+                      cachedName="Date_DT"
+                      externalMetadataColumnId="Package\DFT - Load into ODS Data\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Date_DT]"
+                      lineageId="Package\DFT - Load into ODS Data\Conversion de données.Outputs[Sortie de conversion de données].Columns[Date_DT]" />
+                    <inputColumn
+                      refId="Package\DFT - Load into ODS Data\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[Month]"
+                      cachedDataType="i4"
+                      cachedName="Month"
+                      externalMetadataColumnId="Package\DFT - Load into ODS Data\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Month]"
+                      lineageId="Package\DFT - Load into ODS Data\DER - SPLIT Add Date.Outputs[Sortie de colonne dérivée].Columns[Month]" />
+                    <inputColumn
+                      refId="Package\DFT - Load into ODS Data\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[Year]"
+                      cachedDataType="i4"
+                      cachedName="Year"
+                      externalMetadataColumnId="Package\DFT - Load into ODS Data\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Year]"
+                      lineageId="Package\DFT - Load into ODS Data\DER - SPLIT Add Date.Outputs[Sortie de colonne dérivée].Columns[Year]" />
+                    <inputColumn
+                      refId="Package\DFT - Load into ODS Data\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[Day]"
+                      cachedDataType="i4"
+                      cachedName="Day"
+                      externalMetadataColumnId="Package\DFT - Load into ODS Data\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Day]"
+                      lineageId="Package\DFT - Load into ODS Data\357:invalid" />
+                    <inputColumn
+                      refId="Package\DFT - Load into ODS Data\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[Date]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Date"
+                      externalMetadataColumnId="Package\DFT - Load into ODS Data\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Date]"
+                      lineageId="Package\DFT - Load into ODS Data\DER - SPLIT Colonne Date.Outputs[Sortie de colonne dérivée].Columns[Date]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load into ODS Data\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[CallTimestamp]"
+                      dataType="wstr"
+                      length="255"
+                      name="CallTimestamp" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load into ODS Data\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Call Type]"
+                      dataType="wstr"
+                      length="255"
+                      name="Call Type" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load into ODS Data\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[EmployeeID]"
+                      dataType="wstr"
+                      length="255"
+                      name="EmployeeID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load into ODS Data\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[CallDuration]"
+                      dataType="wstr"
+                      length="255"
+                      name="CallDuration" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load into ODS Data\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[WaitTime]"
+                      dataType="wstr"
+                      length="255"
+                      name="WaitTime" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load into ODS Data\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[CallAbandoned]"
+                      dataType="wstr"
+                      length="255"
+                      name="CallAbandoned" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load into ODS Data\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Date_DT]"
+                      dataType="dbTimeStamp"
+                      name="Date_DT" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load into ODS Data\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Month]"
+                      dataType="i4"
+                      name="Month" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load into ODS Data\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Year]"
+                      dataType="i4"
+                      name="Year" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load into ODS Data\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Day]"
+                      dataType="i4"
+                      name="Day" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load into ODS Data\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Date]"
+                      dataType="wstr"
+                      length="255"
+                      name="Date" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load into ODS Data\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de destination OLE DB"
+                  synchronousInputId="Package\DFT - Load into ODS Data\Destination OLE DB.Inputs[Entrée de destination OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load into ODS Data\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load into ODS Data\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Source OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;7"
+              description="Source OLE DB"
+              name="OLE DB SRC - Data 2018"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[dbo].[DATA_2018]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable contenant la commande SQL à exécuter."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="Mappages entre les paramètres de la commande SQL et les variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[VICTUSJIM\SQLEXPRESS.SSIS_STA]"
+                  connectionManagerRefId="Package.ConnectionManagers[VICTUSJIM\SQLEXPRESS.SSIS_STA]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie de source OLE DB]"
+                  name="Sortie de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie de source OLE DB].Columns[CallTimestamp]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie de source OLE DB].ExternalColumns[CallTimestamp]"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie de source OLE DB].Columns[CallTimestamp]"
+                      name="CallTimestamp"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie de source OLE DB].Columns[Call Type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie de source OLE DB].ExternalColumns[Call Type]"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie de source OLE DB].Columns[Call Type]"
+                      name="Call Type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie de source OLE DB].Columns[EmployeeID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie de source OLE DB].ExternalColumns[EmployeeID]"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie de source OLE DB].Columns[EmployeeID]"
+                      name="EmployeeID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie de source OLE DB].Columns[CallDuration]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie de source OLE DB].ExternalColumns[CallDuration]"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie de source OLE DB].Columns[CallDuration]"
+                      name="CallDuration"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie de source OLE DB].Columns[WaitTime]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie de source OLE DB].ExternalColumns[WaitTime]"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie de source OLE DB].Columns[WaitTime]"
+                      name="WaitTime"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie de source OLE DB].Columns[CallAbandoned]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie de source OLE DB].ExternalColumns[CallAbandoned]"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie de source OLE DB].Columns[CallAbandoned]"
+                      name="CallAbandoned"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie de source OLE DB].ExternalColumns[CallTimestamp]"
+                      dataType="wstr"
+                      length="255"
+                      name="CallTimestamp" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie de source OLE DB].ExternalColumns[Call Type]"
+                      dataType="wstr"
+                      length="255"
+                      name="Call Type" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie de source OLE DB].ExternalColumns[EmployeeID]"
+                      dataType="wstr"
+                      length="255"
+                      name="EmployeeID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie de source OLE DB].ExternalColumns[CallDuration]"
+                      dataType="wstr"
+                      length="255"
+                      name="CallDuration" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie de source OLE DB].ExternalColumns[WaitTime]"
+                      dataType="wstr"
+                      length="255"
+                      name="WaitTime" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie de source OLE DB].ExternalColumns[CallAbandoned]"
+                      dataType="wstr"
+                      length="255"
+                      name="CallAbandoned" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie d'erreur de source OLE DB]"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie d'erreur de source OLE DB].Columns[CallTimestamp]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie d'erreur de source OLE DB].Columns[CallTimestamp]"
+                      name="CallTimestamp" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie d'erreur de source OLE DB].Columns[Call Type]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie d'erreur de source OLE DB].Columns[Call Type]"
+                      name="Call Type" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie d'erreur de source OLE DB].Columns[EmployeeID]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie d'erreur de source OLE DB].Columns[EmployeeID]"
+                      name="EmployeeID" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie d'erreur de source OLE DB].Columns[CallDuration]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie d'erreur de source OLE DB].Columns[CallDuration]"
+                      name="CallDuration" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie d'erreur de source OLE DB].Columns[WaitTime]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie d'erreur de source OLE DB].Columns[WaitTime]"
+                      name="WaitTime" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie d'erreur de source OLE DB].Columns[CallAbandoned]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie d'erreur de source OLE DB].Columns[CallAbandoned]"
+                      name="CallAbandoned" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Source OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;7"
+              description="Source OLE DB"
+              name="OLE DB SRC - Data 2019"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[dbo].[DATA_2019]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable contenant la commande SQL à exécuter."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="Mappages entre les paramètres de la commande SQL et les variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[VICTUSJIM\SQLEXPRESS.SSIS_STA]"
+                  connectionManagerRefId="Package.ConnectionManagers[VICTUSJIM\SQLEXPRESS.SSIS_STA]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie de source OLE DB]"
+                  name="Sortie de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie de source OLE DB].Columns[CallTimestamp]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie de source OLE DB].ExternalColumns[CallTimestamp]"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie de source OLE DB].Columns[CallTimestamp]"
+                      name="CallTimestamp"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie de source OLE DB].Columns[Call Type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie de source OLE DB].ExternalColumns[Call Type]"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie de source OLE DB].Columns[Call Type]"
+                      name="Call Type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie de source OLE DB].Columns[EmployeeID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie de source OLE DB].ExternalColumns[EmployeeID]"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie de source OLE DB].Columns[EmployeeID]"
+                      name="EmployeeID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie de source OLE DB].Columns[CallDuration]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie de source OLE DB].ExternalColumns[CallDuration]"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie de source OLE DB].Columns[CallDuration]"
+                      name="CallDuration"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie de source OLE DB].Columns[WaitTime]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie de source OLE DB].ExternalColumns[WaitTime]"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie de source OLE DB].Columns[WaitTime]"
+                      name="WaitTime"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie de source OLE DB].Columns[CallAbandoned]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie de source OLE DB].ExternalColumns[CallAbandoned]"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie de source OLE DB].Columns[CallAbandoned]"
+                      name="CallAbandoned"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie de source OLE DB].ExternalColumns[CallTimestamp]"
+                      dataType="wstr"
+                      length="255"
+                      name="CallTimestamp" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie de source OLE DB].ExternalColumns[Call Type]"
+                      dataType="wstr"
+                      length="255"
+                      name="Call Type" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie de source OLE DB].ExternalColumns[EmployeeID]"
+                      dataType="wstr"
+                      length="255"
+                      name="EmployeeID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie de source OLE DB].ExternalColumns[CallDuration]"
+                      dataType="wstr"
+                      length="255"
+                      name="CallDuration" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie de source OLE DB].ExternalColumns[WaitTime]"
+                      dataType="wstr"
+                      length="255"
+                      name="WaitTime" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie de source OLE DB].ExternalColumns[CallAbandoned]"
+                      dataType="wstr"
+                      length="255"
+                      name="CallAbandoned" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie d'erreur de source OLE DB]"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie d'erreur de source OLE DB].Columns[CallTimestamp]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie d'erreur de source OLE DB].Columns[CallTimestamp]"
+                      name="CallTimestamp" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie d'erreur de source OLE DB].Columns[Call Type]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie d'erreur de source OLE DB].Columns[Call Type]"
+                      name="Call Type" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie d'erreur de source OLE DB].Columns[EmployeeID]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie d'erreur de source OLE DB].Columns[EmployeeID]"
+                      name="EmployeeID" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie d'erreur de source OLE DB].Columns[CallDuration]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie d'erreur de source OLE DB].Columns[CallDuration]"
+                      name="CallDuration" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie d'erreur de source OLE DB].Columns[WaitTime]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie d'erreur de source OLE DB].Columns[WaitTime]"
+                      name="WaitTime" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie d'erreur de source OLE DB].Columns[CallAbandoned]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie d'erreur de source OLE DB].Columns[CallAbandoned]"
+                      name="CallAbandoned" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Source OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;7"
+              description="Source OLE DB"
+              name="OLE DB SRC - Data 2020"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[dbo].[DATA_2020]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable contenant la commande SQL à exécuter."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="Mappages entre les paramètres de la commande SQL et les variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[VICTUSJIM\SQLEXPRESS.SSIS_STA]"
+                  connectionManagerRefId="Package.ConnectionManagers[VICTUSJIM\SQLEXPRESS.SSIS_STA]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie de source OLE DB]"
+                  name="Sortie de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie de source OLE DB].Columns[CallAbandoned]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie de source OLE DB].ExternalColumns[CallAbandoned]"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie de source OLE DB].Columns[CallAbandoned]"
+                      name="CallAbandoned"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie de source OLE DB].Columns[CallTimestamp]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie de source OLE DB].ExternalColumns[CallTimestamp]"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie de source OLE DB].Columns[CallTimestamp]"
+                      name="CallTimestamp"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie de source OLE DB].Columns[Call Type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie de source OLE DB].ExternalColumns[Call Type]"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie de source OLE DB].Columns[Call Type]"
+                      name="Call Type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie de source OLE DB].Columns[EmployeeID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie de source OLE DB].ExternalColumns[EmployeeID]"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie de source OLE DB].Columns[EmployeeID]"
+                      name="EmployeeID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie de source OLE DB].Columns[CallDuration]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie de source OLE DB].ExternalColumns[CallDuration]"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie de source OLE DB].Columns[CallDuration]"
+                      name="CallDuration"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie de source OLE DB].Columns[WaitTime]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie de source OLE DB].ExternalColumns[WaitTime]"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie de source OLE DB].Columns[WaitTime]"
+                      name="WaitTime"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie de source OLE DB].ExternalColumns[CallAbandoned]"
+                      dataType="wstr"
+                      length="255"
+                      name="CallAbandoned" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie de source OLE DB].ExternalColumns[CallTimestamp]"
+                      dataType="wstr"
+                      length="255"
+                      name="CallTimestamp" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie de source OLE DB].ExternalColumns[Call Type]"
+                      dataType="wstr"
+                      length="255"
+                      name="Call Type" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie de source OLE DB].ExternalColumns[EmployeeID]"
+                      dataType="wstr"
+                      length="255"
+                      name="EmployeeID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie de source OLE DB].ExternalColumns[CallDuration]"
+                      dataType="wstr"
+                      length="255"
+                      name="CallDuration" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie de source OLE DB].ExternalColumns[WaitTime]"
+                      dataType="wstr"
+                      length="255"
+                      name="WaitTime" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie d'erreur de source OLE DB]"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie d'erreur de source OLE DB].Columns[CallAbandoned]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie d'erreur de source OLE DB].Columns[CallAbandoned]"
+                      name="CallAbandoned" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie d'erreur de source OLE DB].Columns[CallTimestamp]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie d'erreur de source OLE DB].Columns[CallTimestamp]"
+                      name="CallTimestamp" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie d'erreur de source OLE DB].Columns[Call Type]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie d'erreur de source OLE DB].Columns[Call Type]"
+                      name="Call Type" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie d'erreur de source OLE DB].Columns[EmployeeID]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie d'erreur de source OLE DB].Columns[EmployeeID]"
+                      name="EmployeeID" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie d'erreur de source OLE DB].Columns[CallDuration]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie d'erreur de source OLE DB].Columns[CallDuration]"
+                      name="CallDuration" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie d'erreur de source OLE DB].Columns[WaitTime]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie d'erreur de source OLE DB].Columns[WaitTime]"
+                      name="WaitTime" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Source OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;7"
+              description="Source OLE DB"
+              name="OLE DB SRC - Data 2021"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[dbo].[DATA_2021]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable contenant la commande SQL à exécuter."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="Mappages entre les paramètres de la commande SQL et les variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[VICTUSJIM\SQLEXPRESS.SSIS_STA]"
+                  connectionManagerRefId="Package.ConnectionManagers[VICTUSJIM\SQLEXPRESS.SSIS_STA]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie de source OLE DB]"
+                  name="Sortie de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie de source OLE DB].Columns[CallAbandoned]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie de source OLE DB].ExternalColumns[CallAbandoned]"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie de source OLE DB].Columns[CallAbandoned]"
+                      name="CallAbandoned"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie de source OLE DB].Columns[CallTimestamp]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie de source OLE DB].ExternalColumns[CallTimestamp]"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie de source OLE DB].Columns[CallTimestamp]"
+                      name="CallTimestamp"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie de source OLE DB].Columns[Call Type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie de source OLE DB].ExternalColumns[Call Type]"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie de source OLE DB].Columns[Call Type]"
+                      name="Call Type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie de source OLE DB].Columns[EmployeeID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie de source OLE DB].ExternalColumns[EmployeeID]"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie de source OLE DB].Columns[EmployeeID]"
+                      name="EmployeeID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie de source OLE DB].Columns[CallDuration]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie de source OLE DB].ExternalColumns[CallDuration]"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie de source OLE DB].Columns[CallDuration]"
+                      name="CallDuration"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie de source OLE DB].Columns[WaitTime]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie de source OLE DB].ExternalColumns[WaitTime]"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie de source OLE DB].Columns[WaitTime]"
+                      name="WaitTime"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie de source OLE DB].ExternalColumns[CallAbandoned]"
+                      dataType="wstr"
+                      length="255"
+                      name="CallAbandoned" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie de source OLE DB].ExternalColumns[CallTimestamp]"
+                      dataType="wstr"
+                      length="255"
+                      name="CallTimestamp" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie de source OLE DB].ExternalColumns[Call Type]"
+                      dataType="wstr"
+                      length="255"
+                      name="Call Type" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie de source OLE DB].ExternalColumns[EmployeeID]"
+                      dataType="wstr"
+                      length="255"
+                      name="EmployeeID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie de source OLE DB].ExternalColumns[CallDuration]"
+                      dataType="wstr"
+                      length="255"
+                      name="CallDuration" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie de source OLE DB].ExternalColumns[WaitTime]"
+                      dataType="wstr"
+                      length="255"
+                      name="WaitTime" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie d'erreur de source OLE DB]"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie d'erreur de source OLE DB].Columns[CallAbandoned]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie d'erreur de source OLE DB].Columns[CallAbandoned]"
+                      name="CallAbandoned" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie d'erreur de source OLE DB].Columns[CallTimestamp]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie d'erreur de source OLE DB].Columns[CallTimestamp]"
+                      name="CallTimestamp" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie d'erreur de source OLE DB].Columns[Call Type]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie d'erreur de source OLE DB].Columns[Call Type]"
+                      name="Call Type" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie d'erreur de source OLE DB].Columns[EmployeeID]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie d'erreur de source OLE DB].Columns[EmployeeID]"
+                      name="EmployeeID" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie d'erreur de source OLE DB].Columns[CallDuration]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie d'erreur de source OLE DB].Columns[CallDuration]"
+                      name="CallDuration" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie d'erreur de source OLE DB].Columns[WaitTime]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie d'erreur de source OLE DB].Columns[WaitTime]"
+                      name="WaitTime" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Load into ODS Data\UNION - All Data"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Unir tout;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;1"
+              description="Combine des lignes de plusieurs flux de données sans effectuer de tri. Par exemple, rajoutez des lignes à un flux de données après correction des erreurs. Si le tri est important, nous recommandons l'utilisation de la transformation de fusion."
+              name="UNION - All Data"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\DFT - Load into ODS Data\UNION - All Data.Inputs[Unir tout entrée 1]"
+                  name="Unir tout entrée 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Load into ODS Data\UNION - All Data.Inputs[Unir tout entrée 1].Columns[CallTimestamp]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CallTimestamp"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie de source OLE DB].Columns[CallTimestamp]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[CallTimestamp]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT - Load into ODS Data\UNION - All Data.Inputs[Unir tout entrée 1].Columns[Call Type]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Call Type"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie de source OLE DB].Columns[Call Type]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[Call Type]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT - Load into ODS Data\UNION - All Data.Inputs[Unir tout entrée 1].Columns[EmployeeID]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="EmployeeID"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie de source OLE DB].Columns[EmployeeID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[EmployeeID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT - Load into ODS Data\UNION - All Data.Inputs[Unir tout entrée 1].Columns[CallDuration]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CallDuration"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie de source OLE DB].Columns[CallDuration]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[CallDuration]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT - Load into ODS Data\UNION - All Data.Inputs[Unir tout entrée 1].Columns[WaitTime]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="WaitTime"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie de source OLE DB].Columns[WaitTime]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[WaitTime]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT - Load into ODS Data\UNION - All Data.Inputs[Unir tout entrée 1].Columns[CallAbandoned]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CallAbandoned"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie de source OLE DB].Columns[CallAbandoned]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[CallAbandoned]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DFT - Load into ODS Data\UNION - All Data.Inputs[Entrée Union All 1]"
+                  hasSideEffects="true"
+                  name="Entrée Union All 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Load into ODS Data\UNION - All Data.Inputs[Entrée Union All 1].Columns[CallTimestamp]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CallTimestamp"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie de source OLE DB].Columns[CallTimestamp]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[CallTimestamp]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT - Load into ODS Data\UNION - All Data.Inputs[Entrée Union All 1].Columns[Call Type]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Call Type"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie de source OLE DB].Columns[Call Type]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[Call Type]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT - Load into ODS Data\UNION - All Data.Inputs[Entrée Union All 1].Columns[EmployeeID]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="EmployeeID"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie de source OLE DB].Columns[EmployeeID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[EmployeeID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT - Load into ODS Data\UNION - All Data.Inputs[Entrée Union All 1].Columns[CallDuration]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CallDuration"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie de source OLE DB].Columns[CallDuration]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[CallDuration]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT - Load into ODS Data\UNION - All Data.Inputs[Entrée Union All 1].Columns[WaitTime]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="WaitTime"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie de source OLE DB].Columns[WaitTime]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[WaitTime]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT - Load into ODS Data\UNION - All Data.Inputs[Entrée Union All 1].Columns[CallAbandoned]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CallAbandoned"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie de source OLE DB].Columns[CallAbandoned]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[CallAbandoned]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DFT - Load into ODS Data\UNION - All Data.Inputs[Entrée Union All 2]"
+                  hasSideEffects="true"
+                  name="Entrée Union All 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Load into ODS Data\UNION - All Data.Inputs[Entrée Union All 2].Columns[CallAbandoned]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CallAbandoned"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie de source OLE DB].Columns[CallAbandoned]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[CallAbandoned]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT - Load into ODS Data\UNION - All Data.Inputs[Entrée Union All 2].Columns[CallTimestamp]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CallTimestamp"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie de source OLE DB].Columns[CallTimestamp]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[CallTimestamp]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT - Load into ODS Data\UNION - All Data.Inputs[Entrée Union All 2].Columns[Call Type]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Call Type"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie de source OLE DB].Columns[Call Type]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[Call Type]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT - Load into ODS Data\UNION - All Data.Inputs[Entrée Union All 2].Columns[EmployeeID]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="EmployeeID"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie de source OLE DB].Columns[EmployeeID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[EmployeeID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT - Load into ODS Data\UNION - All Data.Inputs[Entrée Union All 2].Columns[CallDuration]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CallDuration"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie de source OLE DB].Columns[CallDuration]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[CallDuration]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT - Load into ODS Data\UNION - All Data.Inputs[Entrée Union All 2].Columns[WaitTime]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="WaitTime"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie de source OLE DB].Columns[WaitTime]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[WaitTime]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DFT - Load into ODS Data\UNION - All Data.Inputs[Entrée Union All 3]"
+                  hasSideEffects="true"
+                  name="Entrée Union All 3">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Load into ODS Data\UNION - All Data.Inputs[Entrée Union All 3].Columns[CallAbandoned]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CallAbandoned"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie de source OLE DB].Columns[CallAbandoned]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[CallAbandoned]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT - Load into ODS Data\UNION - All Data.Inputs[Entrée Union All 3].Columns[CallTimestamp]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CallTimestamp"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie de source OLE DB].Columns[CallTimestamp]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[CallTimestamp]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT - Load into ODS Data\UNION - All Data.Inputs[Entrée Union All 3].Columns[Call Type]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Call Type"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie de source OLE DB].Columns[Call Type]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[Call Type]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT - Load into ODS Data\UNION - All Data.Inputs[Entrée Union All 3].Columns[EmployeeID]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="EmployeeID"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie de source OLE DB].Columns[EmployeeID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[EmployeeID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT - Load into ODS Data\UNION - All Data.Inputs[Entrée Union All 3].Columns[CallDuration]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CallDuration"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie de source OLE DB].Columns[CallDuration]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[CallDuration]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT - Load into ODS Data\UNION - All Data.Inputs[Entrée Union All 3].Columns[WaitTime]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="WaitTime"
+                      lineageId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie de source OLE DB].Columns[WaitTime]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[WaitTime]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DFT - Load into ODS Data\UNION - All Data.Inputs[Entrée Union All 4]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Entrée Union All 4">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1]"
+                  name="Unir tout sortie 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[CallTimestamp]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[CallTimestamp]"
+                      name="CallTimestamp" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[Call Type]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[Call Type]"
+                      name="Call Type" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[EmployeeID]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[EmployeeID]"
+                      name="EmployeeID" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[CallDuration]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[CallDuration]"
+                      name="CallDuration" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[WaitTime]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[WaitTime]"
+                      name="WaitTime" />
+                    <outputColumn
+                      refId="Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[CallAbandoned]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1].Columns[CallAbandoned]"
+                      name="CallAbandoned" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT - Load into ODS Data.Paths[Sortie de colonne dérivée]"
+              endId="Package\DFT - Load into ODS Data\Conversion de données.Inputs[Entrée de conversion de données]"
+              name="Sortie de colonne dérivée"
+              startId="Package\DFT - Load into ODS Data\DER - SPLIT Colonne Date.Outputs[Sortie de colonne dérivée]" />
+            <path
+              refId="Package\DFT - Load into ODS Data.Paths[Sortie de conversion de données]"
+              endId="Package\DFT - Load into ODS Data\DER - SPLIT Add Date.Inputs[Entrée de colonne dérivée]"
+              name="Sortie de conversion de données"
+              startId="Package\DFT - Load into ODS Data\Conversion de données.Outputs[Sortie de conversion de données]" />
+            <path
+              refId="Package\DFT - Load into ODS Data.Paths[Sortie de source OLE DB]"
+              endId="Package\DFT - Load into ODS Data\UNION - All Data.Inputs[Unir tout entrée 1]"
+              name="Sortie de source OLE DB"
+              startId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018.Outputs[Sortie de source OLE DB]" />
+            <path
+              refId="Package\DFT - Load into ODS Data.Paths[Sortie de source OLE DB1]"
+              endId="Package\DFT - Load into ODS Data\UNION - All Data.Inputs[Entrée Union All 1]"
+              name="Sortie de source OLE DB"
+              startId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019.Outputs[Sortie de source OLE DB]" />
+            <path
+              refId="Package\DFT - Load into ODS Data.Paths[Sortie de source OLE DB2]"
+              endId="Package\DFT - Load into ODS Data\UNION - All Data.Inputs[Entrée Union All 2]"
+              name="Sortie de source OLE DB"
+              startId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020.Outputs[Sortie de source OLE DB]" />
+            <path
+              refId="Package\DFT - Load into ODS Data.Paths[Sortie de source OLE DB3]"
+              endId="Package\DFT - Load into ODS Data\UNION - All Data.Inputs[Entrée Union All 3]"
+              name="Sortie de source OLE DB"
+              startId="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021.Outputs[Sortie de source OLE DB]" />
+            <path
+              refId="Package\DFT - Load into ODS Data.Paths[Unir tout sortie 1]"
+              endId="Package\DFT - Load into ODS Data\DER - SPLIT Colonne Date.Inputs[Entrée de colonne dérivée]"
+              name="Unir tout sortie 1"
+              startId="Package\DFT - Load into ODS Data\UNION - All Data.Outputs[Unir tout sortie 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Empty ODS Data"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tâche d'exécution de requêtes SQL"
+      DTS:DTSID="{45FCA4E6-4224-4E2B-9E18-05AA9F1773E7}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Empty ODS Data"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022 CTP2.0; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{17517CD4-7C1F-4514-8773-06793D93944C}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE ALLDATA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{EB5D8109-AE2D-458D-B839-BBBD0F7C36F7}"
+      DTS:From="Package\SQL - Empty ODS Data"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DFT - Load into ODS Data" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="200,41.6"
+          Id="Package\DFT - Load into ODS Data"
+          TopLeft="212.499991556009,186.333334814178" />
+        <NodeLayout
+          Size="188,41.6"
+          Id="Package\SQL - Empty ODS Data"
+          TopLeft="200.833325352934,91.8666673967574" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="294.833325352934,133.466667396757">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="17.666666203075,52.8666674174202"
+              Start="0,0"
+              End="17.666666203075,45.3666674174202">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.4333337087101" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.4333337087101"
+                    Point2="0,26.4333337087101"
+                    Point3="4,26.4333337087101" />
+                  <mssgle:LineSegment
+                    End="13.666666203075,26.4333337087101" />
+                  <mssgle:CubicBezierSegment
+                    Point1="13.666666203075,26.4333337087101"
+                    Point2="17.666666203075,26.4333337087101"
+                    Point3="17.666666203075,30.4333337087101" />
+                  <mssgle:LineSegment
+                    End="17.666666203075,45.3666674174202" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT - Load into ODS Data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="197.6,41.6"
+          Id="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018"
+          TopLeft="24,20" />
+        <NodeLayout
+          Size="197.6,41.6"
+          Id="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021"
+          TopLeft="659,21.9999999999999" />
+        <NodeLayout
+          Size="157.6,41.6"
+          Id="Package\DFT - Load into ODS Data\UNION - All Data"
+          TopLeft="326,179" />
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\DFT - Load into ODS Data\Destination OLE DB"
+          TopLeft="319.499992946784,518.866668016646" />
+        <NodeLayout
+          Size="197.6,41.6"
+          Id="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019"
+          TopLeft="231,19" />
+        <NodeLayout
+          Size="197.6,41.6"
+          Id="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020"
+          TopLeft="445,22" />
+        <EdgeLayout
+          Id="Package\DFT - Load into ODS Data.Paths[Sortie de source OLE DB3]"
+          TopLeft="757.8,63.5999999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-308.12,115.4"
+              Start="0,0"
+              End="-308.12,107.9">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,76.6735273243436" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,76.6735273243436"
+                    Point2="0,80.6735273243436"
+                    Point3="-4,80.6735273243436" />
+                  <mssgle:LineSegment
+                    End="-304.12,80.6735273243436" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-304.12,80.6735273243436"
+                    Point2="-308.12,80.6735273243436"
+                    Point3="-308.12,84.6735273243436" />
+                  <mssgle:LineSegment
+                    End="-308.12,107.9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT - Load into ODS Data.Paths[Sortie de source OLE DB2]"
+          TopLeft="543.8,63.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-124.04,115.4"
+              Start="0,0"
+              End="-124.04,107.9">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,59.7515423443634" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,59.7515423443634"
+                    Point2="0,63.7515423443634"
+                    Point3="-4,63.7515423443634" />
+                  <mssgle:LineSegment
+                    End="-120.04,63.7515423443634" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-120.04,63.7515423443634"
+                    Point2="-124.04,63.7515423443634"
+                    Point3="-124.04,67.7515423443634" />
+                  <mssgle:LineSegment
+                    End="-124.04,107.9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT - Load into ODS Data.Paths[Sortie de source OLE DB1]"
+          TopLeft="329.8,60.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="60.04,118.4"
+              Start="0,0"
+              End="60.04,110.9">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,61.4088614694335" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,61.4088614694335"
+                    Point2="0,65.4088614694335"
+                    Point3="4,65.4088614694335" />
+                  <mssgle:LineSegment
+                    End="56.04,65.4088614694335" />
+                  <mssgle:CubicBezierSegment
+                    Point1="56.04,65.4088614694335"
+                    Point2="60.04,65.4088614694335"
+                    Point3="60.04,69.4088614694335" />
+                  <mssgle:LineSegment
+                    End="60.04,110.9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT - Load into ODS Data.Paths[Sortie de source OLE DB]"
+          TopLeft="122.8,61.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="237.12,117.4"
+              Start="0,0"
+              End="237.12,109.9">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,78.0716820440028" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,78.0716820440028"
+                    Point2="0,82.0716820440028"
+                    Point3="4,82.0716820440028" />
+                  <mssgle:LineSegment
+                    End="233.12,82.0716820440028" />
+                  <mssgle:CubicBezierSegment
+                    Point1="233.12,82.0716820440028"
+                    Point2="237.12,82.0716820440028"
+                    Point3="237.12,86.0716820440028" />
+                  <mssgle:LineSegment
+                    End="237.12,109.9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="204.8,41.6"
+          Id="Package\DFT - Load into ODS Data\DER - SPLIT Colonne Date"
+          TopLeft="295.833321577974,280.800002231598" />
+        <EdgeLayout
+          Id="Package\DFT - Load into ODS Data.Paths[Unir tout sortie 1]"
+          TopLeft="401.516660788987,220.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.2000022315978"
+              Start="0,0"
+              End="0,52.7000022315978">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.7000022315978" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="188,41.6"
+          Id="Package\DFT - Load into ODS Data\Conversion de données"
+          TopLeft="307.499987781048,349.266669442389" />
+        <EdgeLayout
+          Id="Package\DFT - Load into ODS Data.Paths[Sortie de colonne dérivée]"
+          TopLeft="399.866654679511,322.400002231598">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,26.8666672107909"
+              Start="0,0"
+              End="0,19.3666672107909">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.3666672107909" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="184,41.6"
+          Id="Package\DFT - Load into ODS Data\DER - SPLIT Add Date"
+          TopLeft="312.499987582366,429.86667008294" />
+        <EdgeLayout
+          Id="Package\DFT - Load into ODS Data.Paths[Sortie de conversion de données]"
+          TopLeft="402.999987681707,390.866669442389">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39.0000006405513"
+              Start="0,0"
+              End="0,31.5000006405513">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5000006405513" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2018">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2021">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Load into ODS Data\Destination OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2019">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Load into ODS Data\OLE DB SRC - Data 2020">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

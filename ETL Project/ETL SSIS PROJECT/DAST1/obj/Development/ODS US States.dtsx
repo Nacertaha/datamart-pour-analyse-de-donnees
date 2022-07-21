@@ -1,0 +1,2150 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/14/2022 11:15:33 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="VICTUSJIM"
+  DTS:CreatorName="VICTUSJIM\dmwag"
+  DTS:DTSID="{6F7000D5-C85B-473E-81CE-CFDA66C5256D}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.521.0"
+  DTS:LocaleID="1036"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="21"
+  DTS:VersionGUID="{F717227D-24CE-44C3-8A05-FCF4E5071AB8}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT Load into ODS Us States"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tâche de flux de données"
+      DTS:DTSID="{E3CC8BD8-71CB-4185-BA02-F4BC5F3AEA84}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT Load into ODS Us States"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT Load into ODS Us States\All - Errors"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Unir tout;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;1"
+              description="Combine des lignes de plusieurs flux de données sans effectuer de tri. Par exemple, rajoutez des lignes à un flux de données après correction des erreurs. Si le tri est important, nous recommandons l'utilisation de la transformation de fusion."
+              name="All - Errors"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\DFT Load into ODS Us States\All - Errors.Inputs[Unir tout entrée 1]"
+                  name="Unir tout entrée 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Us States\All - Errors.Inputs[Unir tout entrée 1].Columns[StateCD]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="StateCD"
+                      lineageId="Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie de source OLE DB].Columns[StateCD]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1].Columns[StateCD]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Us States\All - Errors.Inputs[Unir tout entrée 1].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Name"
+                      lineageId="Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie de source OLE DB].Columns[Name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1].Columns[Name]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Us States\All - Errors.Inputs[Unir tout entrée 1].Columns[Region]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Region"
+                      lineageId="Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie de source OLE DB].Columns[Region]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1].Columns[Region]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Us States\All - Errors.Inputs[Unir tout entrée 1].Columns[ErrorCode]"
+                      cachedDataType="i4"
+                      cachedName="ErrorCode"
+                      lineageId="Package\DFT Load into ODS Us States\DCNV - Checking StateCD.Outputs[Sortie d'erreur de conversion de données].Columns[ErrorCode]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1].Columns[ErrorCode]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Us States\All - Errors.Inputs[Unir tout entrée 1].Columns[ErrorColumn]"
+                      cachedDataType="i4"
+                      cachedName="ErrorColumn"
+                      lineageId="Package\DFT Load into ODS Us States\DCNV - Checking StateCD.Outputs[Sortie d'erreur de conversion de données].Columns[ErrorColumn]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1].Columns[ErrorColumn]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Us States\All - Errors.Inputs[Unir tout entrée 1].Columns[RejectDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="RejectDate"
+                      lineageId="Package\DFT Load into ODS Us States\DER - Error info StateCD.Outputs[Sortie de colonne dérivée].Columns[RejectDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1].Columns[RejectDate]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Us States\All - Errors.Inputs[Unir tout entrée 1].Columns[RejectType]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="RejectType"
+                      lineageId="Package\DFT Load into ODS Us States\DER - Error info StateCD.Outputs[Sortie de colonne dérivée].Columns[RejectType]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1].Columns[RejectType]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Us States\All - Errors.Inputs[Unir tout entrée 1].Columns[RejectColumn]"
+                      cachedDataType="wstr"
+                      cachedLength="7"
+                      cachedName="RejectColumn"
+                      lineageId="Package\DFT Load into ODS Us States\DER - Error info StateCD.Outputs[Sortie de colonne dérivée].Columns[RejectColumn]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1].Columns[RejectColumn]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DFT Load into ODS Us States\All - Errors.Inputs[Entrée Union All 1]"
+                  hasSideEffects="true"
+                  name="Entrée Union All 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Us States\All - Errors.Inputs[Entrée Union All 1].Columns[StateCD]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="StateCD"
+                      lineageId="Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie de source OLE DB].Columns[StateCD]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1].Columns[StateCD]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Us States\All - Errors.Inputs[Entrée Union All 1].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Name"
+                      lineageId="Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie de source OLE DB].Columns[Name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1].Columns[Name]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Us States\All - Errors.Inputs[Entrée Union All 1].Columns[Region]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Region"
+                      lineageId="Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie de source OLE DB].Columns[Region]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1].Columns[Region]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Us States\All - Errors.Inputs[Entrée Union All 1].Columns[ErrorCode]"
+                      cachedDataType="i4"
+                      cachedName="ErrorCode"
+                      lineageId="Package\DFT Load into ODS Us States\DCNV - Name.Outputs[Sortie d'erreur de conversion de données].Columns[ErrorCode]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1].Columns[ErrorCode]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Us States\All - Errors.Inputs[Entrée Union All 1].Columns[ErrorColumn]"
+                      cachedDataType="i4"
+                      cachedName="ErrorColumn"
+                      lineageId="Package\DFT Load into ODS Us States\DCNV - Name.Outputs[Sortie d'erreur de conversion de données].Columns[ErrorColumn]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1].Columns[ErrorColumn]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Us States\All - Errors.Inputs[Entrée Union All 1].Columns[RejectDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="RejectDate"
+                      lineageId="Package\DFT Load into ODS Us States\DER - Error info Name.Outputs[Sortie de colonne dérivée].Columns[RejectDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1].Columns[RejectDate]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Us States\All - Errors.Inputs[Entrée Union All 1].Columns[RejectType]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="RejectType"
+                      lineageId="Package\DFT Load into ODS Us States\DER - Error info Name.Outputs[Sortie de colonne dérivée].Columns[RejectType]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1].Columns[RejectType]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Us States\All - Errors.Inputs[Entrée Union All 1].Columns[RejectColumn]"
+                      cachedDataType="wstr"
+                      cachedLength="4"
+                      cachedName="RejectColumn"
+                      lineageId="Package\DFT Load into ODS Us States\DER - Error info Name.Outputs[Sortie de colonne dérivée].Columns[RejectColumn]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1].Columns[RejectColumn]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DFT Load into ODS Us States\All - Errors.Inputs[Entrée Union All 2]"
+                  hasSideEffects="true"
+                  name="Entrée Union All 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Us States\All - Errors.Inputs[Entrée Union All 2].Columns[StateCD]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="StateCD"
+                      lineageId="Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie de source OLE DB].Columns[StateCD]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1].Columns[StateCD]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Us States\All - Errors.Inputs[Entrée Union All 2].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Name"
+                      lineageId="Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie de source OLE DB].Columns[Name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1].Columns[Name]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Us States\All - Errors.Inputs[Entrée Union All 2].Columns[Region]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Region"
+                      lineageId="Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie de source OLE DB].Columns[Region]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1].Columns[Region]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Us States\All - Errors.Inputs[Entrée Union All 2].Columns[ErrorCode]"
+                      cachedDataType="i4"
+                      cachedName="ErrorCode"
+                      lineageId="Package\DFT Load into ODS Us States\DCNV - Region.Outputs[Sortie d'erreur de conversion de données].Columns[ErrorCode]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1].Columns[ErrorCode]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Us States\All - Errors.Inputs[Entrée Union All 2].Columns[ErrorColumn]"
+                      cachedDataType="i4"
+                      cachedName="ErrorColumn"
+                      lineageId="Package\DFT Load into ODS Us States\DCNV - Region.Outputs[Sortie d'erreur de conversion de données].Columns[ErrorColumn]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1].Columns[ErrorColumn]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Us States\All - Errors.Inputs[Entrée Union All 2].Columns[RejectDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="RejectDate"
+                      lineageId="Package\DFT Load into ODS Us States\DER - Error info Region.Outputs[Sortie de colonne dérivée].Columns[RejectDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1].Columns[RejectDate]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Us States\All - Errors.Inputs[Entrée Union All 2].Columns[RejectType]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="RejectType"
+                      lineageId="Package\DFT Load into ODS Us States\DER - Error info Region.Outputs[Sortie de colonne dérivée].Columns[RejectType]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1].Columns[RejectType]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Us States\All - Errors.Inputs[Entrée Union All 2].Columns[RejectColumn]"
+                      cachedDataType="wstr"
+                      cachedLength="6"
+                      cachedName="RejectColumn"
+                      lineageId="Package\DFT Load into ODS Us States\DER - Error info Region.Outputs[Sortie de colonne dérivée].Columns[RejectColumn]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de traçabilité de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1].Columns[RejectColumn]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DFT Load into ODS Us States\All - Errors.Inputs[Entrée Union All 3]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Entrée Union All 3">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1]"
+                  name="Unir tout sortie 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1].Columns[StateCD]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1].Columns[StateCD]"
+                      name="StateCD" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1].Columns[Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1].Columns[Region]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1].Columns[Region]"
+                      name="Region" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1].Columns[ErrorCode]"
+                      name="ErrorCode" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1].Columns[ErrorColumn]"
+                      name="ErrorColumn" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1].Columns[RejectDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1].Columns[RejectDate]"
+                      name="RejectDate" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1].Columns[RejectType]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1].Columns[RejectType]"
+                      name="RejectType" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1].Columns[RejectColumn]"
+                      dataType="wstr"
+                      length="7"
+                      lineageId="Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1].Columns[RejectColumn]"
+                      name="RejectColumn" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Load into ODS Us States\DCNV - Checking StateCD"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Conversion de données;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;0"
+              description="Conversion de données"
+              name="DCNV - Checking StateCD"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT Load into ODS Us States\DCNV - Checking StateCD.Inputs[Entrée de conversion de données]"
+                  name="Entrée de conversion de données">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Us States\DCNV - Checking StateCD.Inputs[Entrée de conversion de données].Columns[StateCD]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="StateCD"
+                      lineageId="Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie de source OLE DB].Columns[StateCD]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Load into ODS Us States\DCNV - Checking StateCD.Outputs[Sortie de conversion de données]"
+                  exclusionGroup="1"
+                  name="Sortie de conversion de données"
+                  synchronousInputId="Package\DFT Load into ODS Us States\DCNV - Checking StateCD.Inputs[Entrée de conversion de données]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\DCNV - Checking StateCD.Outputs[Sortie de conversion de données].Columns[StateCD_STR]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="RedirectRow"
+                      length="50"
+                      lineageId="Package\DFT Load into ODS Us States\DCNV - Checking StateCD.Outputs[Sortie de conversion de données].Columns[StateCD_STR]"
+                      name="StateCD_STR"
+                      truncationRowDisposition="RedirectRow">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie la colonne d'entrée utilisée comme source de données pour la conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie de source OLE DB].Columns[StateCD]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT Load into ODS Us States\DCNV - Checking StateCD.Outputs[Sortie d'erreur de conversion de données]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de conversion de données"
+                  synchronousInputId="Package\DFT Load into ODS Us States\DCNV - Checking StateCD.Inputs[Entrée de conversion de données]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\DCNV - Checking StateCD.Outputs[Sortie d'erreur de conversion de données].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into ODS Us States\DCNV - Checking StateCD.Outputs[Sortie d'erreur de conversion de données].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\DCNV - Checking StateCD.Outputs[Sortie d'erreur de conversion de données].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into ODS Us States\DCNV - Checking StateCD.Outputs[Sortie d'erreur de conversion de données].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Load into ODS Us States\DCNV - Name"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Conversion de données;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;0"
+              description="Conversion de données"
+              name="DCNV - Name"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT Load into ODS Us States\DCNV - Name.Inputs[Entrée de conversion de données]"
+                  name="Entrée de conversion de données">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Us States\DCNV - Name.Inputs[Entrée de conversion de données].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Name"
+                      lineageId="Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie de source OLE DB].Columns[Name]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Load into ODS Us States\DCNV - Name.Outputs[Sortie de conversion de données]"
+                  exclusionGroup="1"
+                  name="Sortie de conversion de données"
+                  synchronousInputId="Package\DFT Load into ODS Us States\DCNV - Name.Inputs[Entrée de conversion de données]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\DCNV - Name.Outputs[Sortie de conversion de données].Columns[Name_STR]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="RedirectRow"
+                      length="50"
+                      lineageId="Package\DFT Load into ODS Us States\DCNV - Name.Outputs[Sortie de conversion de données].Columns[Name_STR]"
+                      name="Name_STR"
+                      truncationRowDisposition="RedirectRow">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie la colonne d'entrée utilisée comme source de données pour la conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie de source OLE DB].Columns[Name]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT Load into ODS Us States\DCNV - Name.Outputs[Sortie d'erreur de conversion de données]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de conversion de données"
+                  synchronousInputId="Package\DFT Load into ODS Us States\DCNV - Name.Inputs[Entrée de conversion de données]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\DCNV - Name.Outputs[Sortie d'erreur de conversion de données].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into ODS Us States\DCNV - Name.Outputs[Sortie d'erreur de conversion de données].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\DCNV - Name.Outputs[Sortie d'erreur de conversion de données].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into ODS Us States\DCNV - Name.Outputs[Sortie d'erreur de conversion de données].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Load into ODS Us States\DCNV - Region"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Conversion de données;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;0"
+              description="Conversion de données"
+              name="DCNV - Region"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT Load into ODS Us States\DCNV - Region.Inputs[Entrée de conversion de données]"
+                  name="Entrée de conversion de données">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Us States\DCNV - Region.Inputs[Entrée de conversion de données].Columns[Region]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Region"
+                      lineageId="Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie de source OLE DB].Columns[Region]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Load into ODS Us States\DCNV - Region.Outputs[Sortie de conversion de données]"
+                  exclusionGroup="1"
+                  name="Sortie de conversion de données"
+                  synchronousInputId="Package\DFT Load into ODS Us States\DCNV - Region.Inputs[Entrée de conversion de données]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\DCNV - Region.Outputs[Sortie de conversion de données].Columns[Region_STR]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="RedirectRow"
+                      length="50"
+                      lineageId="Package\DFT Load into ODS Us States\DCNV - Region.Outputs[Sortie de conversion de données].Columns[Region_STR]"
+                      name="Region_STR"
+                      truncationRowDisposition="RedirectRow">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie la colonne d'entrée utilisée comme source de données pour la conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie de source OLE DB].Columns[Region]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT Load into ODS Us States\DCNV - Region.Outputs[Sortie d'erreur de conversion de données]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de conversion de données"
+                  synchronousInputId="Package\DFT Load into ODS Us States\DCNV - Region.Inputs[Entrée de conversion de données]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\DCNV - Region.Outputs[Sortie d'erreur de conversion de données].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into ODS Us States\DCNV - Region.Outputs[Sortie d'erreur de conversion de données].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\DCNV - Region.Outputs[Sortie d'erreur de conversion de données].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into ODS Us States\DCNV - Region.Outputs[Sortie d'erreur de conversion de données].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Load into ODS Us States\DCNV - Resizing"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Conversion de données;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;0"
+              description="Conversion de données"
+              name="DCNV - Resizing"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT Load into ODS Us States\DCNV - Resizing.Inputs[Entrée de conversion de données]"
+                  name="Entrée de conversion de données">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Us States\DCNV - Resizing.Inputs[Entrée de conversion de données].Columns[Region]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Region"
+                      lineageId="Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie de source OLE DB].Columns[Region]" />
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Us States\DCNV - Resizing.Inputs[Entrée de conversion de données].Columns[StateCD]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="StateCD"
+                      lineageId="Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie de source OLE DB].Columns[StateCD]" />
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Us States\DCNV - Resizing.Inputs[Entrée de conversion de données].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Name"
+                      lineageId="Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie de source OLE DB].Columns[Name]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Load into ODS Us States\DCNV - Resizing.Outputs[Sortie de conversion de données]"
+                  exclusionGroup="1"
+                  name="Sortie de conversion de données"
+                  synchronousInputId="Package\DFT Load into ODS Us States\DCNV - Resizing.Inputs[Entrée de conversion de données]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\DCNV - Resizing.Outputs[Sortie de conversion de données].Columns[StateCD_50]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\DFT Load into ODS Us States\DCNV - Resizing.Outputs[Sortie de conversion de données].Columns[StateCD_50]"
+                      name="StateCD_50"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie la colonne d'entrée utilisée comme source de données pour la conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie de source OLE DB].Columns[StateCD]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\DCNV - Resizing.Outputs[Sortie de conversion de données].Columns[Name_50]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\DFT Load into ODS Us States\DCNV - Resizing.Outputs[Sortie de conversion de données].Columns[Name_50]"
+                      name="Name_50"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie la colonne d'entrée utilisée comme source de données pour la conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie de source OLE DB].Columns[Name]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\DCNV - Resizing.Outputs[Sortie de conversion de données].Columns[Region_50]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\DFT Load into ODS Us States\DCNV - Resizing.Outputs[Sortie de conversion de données].Columns[Region_50]"
+                      name="Region_50"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie la colonne d'entrée utilisée comme source de données pour la conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie de source OLE DB].Columns[Region]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT Load into ODS Us States\DCNV - Resizing.Outputs[Sortie d'erreur de conversion de données]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de conversion de données"
+                  synchronousInputId="Package\DFT Load into ODS Us States\DCNV - Resizing.Inputs[Entrée de conversion de données]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\DCNV - Resizing.Outputs[Sortie d'erreur de conversion de données].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into ODS Us States\DCNV - Resizing.Outputs[Sortie d'erreur de conversion de données].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\DCNV - Resizing.Outputs[Sortie d'erreur de conversion de données].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into ODS Us States\DCNV - Resizing.Outputs[Sortie d'erreur de conversion de données].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Load into ODS Us States\DER - Error info Name"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Colonne dérivée;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;0"
+              description="Crée de nouvelles valeurs de colonne en appliquant des expressions aux colonnes d'entrée de transformation. Créez de nouvelles colonnes ou remplacez celles qui existent déjà. Par exemple, concaténez les valeurs de la colonne 'prénom' et de la colonne 'nom' pour créer une colonne 'nom complet'."
+              name="DER - Error info Name"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT Load into ODS Us States\DER - Error info Name.Inputs[Entrée de colonne dérivée]"
+                  description="Entrée de la transformation de colonnes dérivées"
+                  name="Entrée de colonne dérivée">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Load into ODS Us States\DER - Error info Name.Outputs[Sortie de colonne dérivée]"
+                  description="Sortie par défaut de la transformation de colonnes dérivées"
+                  exclusionGroup="1"
+                  name="Sortie de colonne dérivée"
+                  synchronousInputId="Package\DFT Load into ODS Us States\DER - Error info Name.Inputs[Entrée de colonne dérivée]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\DER - Error info Name.Outputs[Sortie de colonne dérivée].Columns[RejectDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Calcul"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT Load into ODS Us States\DER - Error info Name.Outputs[Sortie de colonne dérivée].Columns[RejectDate]"
+                      name="RejectDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression de colonne dérivée"
+                          name="Expression">[GETDATE]()</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression claire de colonne dérivée"
+                          expressionType="Notify"
+                          name="FriendlyExpression">GETDATE()</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\DER - Error info Name.Outputs[Sortie de colonne dérivée].Columns[RejectType]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Calcul"
+                      errorRowDisposition="FailComponent"
+                      length="15"
+                      lineageId="Package\DFT Load into ODS Us States\DER - Error info Name.Outputs[Sortie de colonne dérivée].Columns[RejectType]"
+                      name="RejectType"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression de colonne dérivée"
+                          name="Expression">"Data conversion"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression claire de colonne dérivée"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"Data conversion"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\DER - Error info Name.Outputs[Sortie de colonne dérivée].Columns[RejectColumn]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Calcul"
+                      errorRowDisposition="FailComponent"
+                      length="4"
+                      lineageId="Package\DFT Load into ODS Us States\DER - Error info Name.Outputs[Sortie de colonne dérivée].Columns[RejectColumn]"
+                      name="RejectColumn"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression de colonne dérivée"
+                          name="Expression">"Name"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression claire de colonne dérivée"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"Name"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT Load into ODS Us States\DER - Error info Name.Outputs[Sortie d'erreur de colonne dérivée]"
+                  description="Sortie d'erreur de la transformation de colonnes dérivées"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de colonne dérivée"
+                  synchronousInputId="Package\DFT Load into ODS Us States\DER - Error info Name.Inputs[Entrée de colonne dérivée]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\DER - Error info Name.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into ODS Us States\DER - Error info Name.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\DER - Error info Name.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into ODS Us States\DER - Error info Name.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Load into ODS Us States\DER - Error info Region"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Colonne dérivée;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;0"
+              description="Crée de nouvelles valeurs de colonne en appliquant des expressions aux colonnes d'entrée de transformation. Créez de nouvelles colonnes ou remplacez celles qui existent déjà. Par exemple, concaténez les valeurs de la colonne 'prénom' et de la colonne 'nom' pour créer une colonne 'nom complet'."
+              name="DER - Error info Region"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT Load into ODS Us States\DER - Error info Region.Inputs[Entrée de colonne dérivée]"
+                  description="Entrée de la transformation de colonnes dérivées"
+                  name="Entrée de colonne dérivée">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Load into ODS Us States\DER - Error info Region.Outputs[Sortie de colonne dérivée]"
+                  description="Sortie par défaut de la transformation de colonnes dérivées"
+                  exclusionGroup="1"
+                  name="Sortie de colonne dérivée"
+                  synchronousInputId="Package\DFT Load into ODS Us States\DER - Error info Region.Inputs[Entrée de colonne dérivée]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\DER - Error info Region.Outputs[Sortie de colonne dérivée].Columns[RejectDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Calcul"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT Load into ODS Us States\DER - Error info Region.Outputs[Sortie de colonne dérivée].Columns[RejectDate]"
+                      name="RejectDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression de colonne dérivée"
+                          name="Expression">[GETDATE]()</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression claire de colonne dérivée"
+                          expressionType="Notify"
+                          name="FriendlyExpression">GETDATE()</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\DER - Error info Region.Outputs[Sortie de colonne dérivée].Columns[RejectType]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Calcul"
+                      errorRowDisposition="FailComponent"
+                      length="15"
+                      lineageId="Package\DFT Load into ODS Us States\DER - Error info Region.Outputs[Sortie de colonne dérivée].Columns[RejectType]"
+                      name="RejectType"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression de colonne dérivée"
+                          name="Expression">"Data conversion"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression claire de colonne dérivée"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"Data conversion"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\DER - Error info Region.Outputs[Sortie de colonne dérivée].Columns[RejectColumn]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Calcul"
+                      errorRowDisposition="FailComponent"
+                      length="6"
+                      lineageId="Package\DFT Load into ODS Us States\DER - Error info Region.Outputs[Sortie de colonne dérivée].Columns[RejectColumn]"
+                      name="RejectColumn"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression de colonne dérivée"
+                          name="Expression">"Region"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression claire de colonne dérivée"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"Region"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT Load into ODS Us States\DER - Error info Region.Outputs[Sortie d'erreur de colonne dérivée]"
+                  description="Sortie d'erreur de la transformation de colonnes dérivées"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de colonne dérivée"
+                  synchronousInputId="Package\DFT Load into ODS Us States\DER - Error info Region.Inputs[Entrée de colonne dérivée]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\DER - Error info Region.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into ODS Us States\DER - Error info Region.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\DER - Error info Region.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into ODS Us States\DER - Error info Region.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Load into ODS Us States\DER - Error info StateCD"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Colonne dérivée;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;0"
+              description="Crée de nouvelles valeurs de colonne en appliquant des expressions aux colonnes d'entrée de transformation. Créez de nouvelles colonnes ou remplacez celles qui existent déjà. Par exemple, concaténez les valeurs de la colonne 'prénom' et de la colonne 'nom' pour créer une colonne 'nom complet'."
+              name="DER - Error info StateCD"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT Load into ODS Us States\DER - Error info StateCD.Inputs[Entrée de colonne dérivée]"
+                  description="Entrée de la transformation de colonnes dérivées"
+                  name="Entrée de colonne dérivée">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Load into ODS Us States\DER - Error info StateCD.Outputs[Sortie de colonne dérivée]"
+                  description="Sortie par défaut de la transformation de colonnes dérivées"
+                  exclusionGroup="1"
+                  name="Sortie de colonne dérivée"
+                  synchronousInputId="Package\DFT Load into ODS Us States\DER - Error info StateCD.Inputs[Entrée de colonne dérivée]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\DER - Error info StateCD.Outputs[Sortie de colonne dérivée].Columns[RejectDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Calcul"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT Load into ODS Us States\DER - Error info StateCD.Outputs[Sortie de colonne dérivée].Columns[RejectDate]"
+                      name="RejectDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression de colonne dérivée"
+                          name="Expression">[GETDATE]()</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression claire de colonne dérivée"
+                          expressionType="Notify"
+                          name="FriendlyExpression">GETDATE()</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\DER - Error info StateCD.Outputs[Sortie de colonne dérivée].Columns[RejectType]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Calcul"
+                      errorRowDisposition="FailComponent"
+                      length="15"
+                      lineageId="Package\DFT Load into ODS Us States\DER - Error info StateCD.Outputs[Sortie de colonne dérivée].Columns[RejectType]"
+                      name="RejectType"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression de colonne dérivée"
+                          name="Expression">"Data conversion"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression claire de colonne dérivée"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"Data conversion"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\DER - Error info StateCD.Outputs[Sortie de colonne dérivée].Columns[RejectColumn]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Calcul"
+                      errorRowDisposition="FailComponent"
+                      length="7"
+                      lineageId="Package\DFT Load into ODS Us States\DER - Error info StateCD.Outputs[Sortie de colonne dérivée].Columns[RejectColumn]"
+                      name="RejectColumn"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression de colonne dérivée"
+                          name="Expression">"StateCD"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression claire de colonne dérivée"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"StateCD"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT Load into ODS Us States\DER - Error info StateCD.Outputs[Sortie d'erreur de colonne dérivée]"
+                  description="Sortie d'erreur de la transformation de colonnes dérivées"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de colonne dérivée"
+                  synchronousInputId="Package\DFT Load into ODS Us States\DER - Error info StateCD.Inputs[Entrée de colonne dérivée]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\DER - Error info StateCD.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into ODS Us States\DER - Error info StateCD.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\DER - Error info StateCD.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into ODS Us States\DER - Error info StateCD.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Load into ODS Us States\OLE_DST - Technical_Rejects"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destination OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;4"
+              description="Destination OLE DB"
+              name="OLE_DST - Technical_Rejects"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[dbo].[Technical_Rejects]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les valeurs fournies pour les colonnes d'identité seront copiées à la destination. Si la valeur est définie à False, les valeurs des colonnes d'identité seront générées automatiquement à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les colonnes contenant la valeur NULL auront cette valeur NULL copiée à la destination. Si la valeur est définie à False, les colonnes contenant la valeur NULL auront leurs valeurs par défaut insérées à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie les options à utiliser avec le chargement rapide.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadOptions">CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie quand les validations sont émises pendant l'insertion des données.  Une valeur égale à 0 spécifie qu'une validation sera émise à la fin de l'insertion des données.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT Load into ODS Us States\OLE_DST - Technical_Rejects.Connections[OleDbConnection]"
+                  connectionManagerID="{D23F9E8B-3084-4ED7-8F4D-155F822CD413}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SSIS_STA]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT Load into ODS Us States\OLE_DST - Technical_Rejects.Inputs[Entrée de destination OLE DB]"
+                  errorOrTruncationOperation="Insérer"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrée de destination OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Us States\OLE_DST - Technical_Rejects.Inputs[Entrée de destination OLE DB].Columns[RejectDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="RejectDate"
+                      externalMetadataColumnId="Package\DFT Load into ODS Us States\OLE_DST - Technical_Rejects.Inputs[Entrée de destination OLE DB].ExternalColumns[RejectDate]"
+                      lineageId="Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1].Columns[RejectDate]" />
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Us States\OLE_DST - Technical_Rejects.Inputs[Entrée de destination OLE DB].Columns[RejectType]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="RejectType"
+                      externalMetadataColumnId="Package\DFT Load into ODS Us States\OLE_DST - Technical_Rejects.Inputs[Entrée de destination OLE DB].ExternalColumns[RejectType]"
+                      lineageId="Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1].Columns[RejectType]" />
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Us States\OLE_DST - Technical_Rejects.Inputs[Entrée de destination OLE DB].Columns[RejectColumn]"
+                      cachedDataType="wstr"
+                      cachedLength="7"
+                      cachedName="RejectColumn"
+                      externalMetadataColumnId="Package\DFT Load into ODS Us States\OLE_DST - Technical_Rejects.Inputs[Entrée de destination OLE DB].ExternalColumns[RejectColumn]"
+                      lineageId="Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1].Columns[RejectColumn]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into ODS Us States\OLE_DST - Technical_Rejects.Inputs[Entrée de destination OLE DB].ExternalColumns[RejectDate]"
+                      dataType="dbTimeStamp"
+                      name="RejectDate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into ODS Us States\OLE_DST - Technical_Rejects.Inputs[Entrée de destination OLE DB].ExternalColumns[RejectType]"
+                      dataType="wstr"
+                      length="15"
+                      name="RejectType" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into ODS Us States\OLE_DST - Technical_Rejects.Inputs[Entrée de destination OLE DB].ExternalColumns[RejectColumn]"
+                      dataType="wstr"
+                      length="13"
+                      name="RejectColumn" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Load into ODS Us States\OLE_DST - Technical_Rejects.Outputs[Sortie d'erreur de destination OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de destination OLE DB"
+                  synchronousInputId="Package\DFT Load into ODS Us States\OLE_DST - Technical_Rejects.Inputs[Entrée de destination OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\OLE_DST - Technical_Rejects.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into ODS Us States\OLE_DST - Technical_Rejects.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\OLE_DST - Technical_Rejects.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into ODS Us States\OLE_DST - Technical_Rejects.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Load into ODS Us States\SRC OLE DB ODS US STATES"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destination OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;4"
+              description="Destination OLE DB"
+              name="SRC OLE DB ODS US STATES"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[US_STATES]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les valeurs fournies pour les colonnes d'identité seront copiées à la destination. Si la valeur est définie à False, les valeurs des colonnes d'identité seront générées automatiquement à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les colonnes contenant la valeur NULL auront cette valeur NULL copiée à la destination. Si la valeur est définie à False, les colonnes contenant la valeur NULL auront leurs valeurs par défaut insérées à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie les options à utiliser avec le chargement rapide.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie quand les validations sont émises pendant l'insertion des données.  Une valeur égale à 0 spécifie qu'une validation sera émise à la fin de l'insertion des données.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT Load into ODS Us States\SRC OLE DB ODS US STATES.Connections[OleDbConnection]"
+                  connectionManagerID="{68AE270F-0EE5-4ECF-9E0D-8E4F38A47D57}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SSIS_ODS]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT Load into ODS Us States\SRC OLE DB ODS US STATES.Inputs[Entrée de destination OLE DB]"
+                  errorOrTruncationOperation="Insérer"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrée de destination OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Us States\SRC OLE DB ODS US STATES.Inputs[Entrée de destination OLE DB].Columns[StateCD_50]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="StateCD_50"
+                      externalMetadataColumnId="Package\DFT Load into ODS Us States\SRC OLE DB ODS US STATES.Inputs[Entrée de destination OLE DB].ExternalColumns[StateCD]"
+                      lineageId="Package\DFT Load into ODS Us States\DCNV - Resizing.Outputs[Sortie de conversion de données].Columns[StateCD_50]" />
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Us States\SRC OLE DB ODS US STATES.Inputs[Entrée de destination OLE DB].Columns[Name_50]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Name_50"
+                      externalMetadataColumnId="Package\DFT Load into ODS Us States\SRC OLE DB ODS US STATES.Inputs[Entrée de destination OLE DB].ExternalColumns[Name]"
+                      lineageId="Package\DFT Load into ODS Us States\DCNV - Resizing.Outputs[Sortie de conversion de données].Columns[Name_50]" />
+                    <inputColumn
+                      refId="Package\DFT Load into ODS Us States\SRC OLE DB ODS US STATES.Inputs[Entrée de destination OLE DB].Columns[Region_50]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Region_50"
+                      externalMetadataColumnId="Package\DFT Load into ODS Us States\SRC OLE DB ODS US STATES.Inputs[Entrée de destination OLE DB].ExternalColumns[Region]"
+                      lineageId="Package\DFT Load into ODS Us States\DCNV - Resizing.Outputs[Sortie de conversion de données].Columns[Region_50]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into ODS Us States\SRC OLE DB ODS US STATES.Inputs[Entrée de destination OLE DB].ExternalColumns[StateCD]"
+                      dataType="wstr"
+                      length="50"
+                      name="StateCD" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into ODS Us States\SRC OLE DB ODS US STATES.Inputs[Entrée de destination OLE DB].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="50"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into ODS Us States\SRC OLE DB ODS US STATES.Inputs[Entrée de destination OLE DB].ExternalColumns[Region]"
+                      dataType="wstr"
+                      length="50"
+                      name="Region" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Load into ODS Us States\SRC OLE DB ODS US STATES.Outputs[Sortie d'erreur de destination OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de destination OLE DB"
+                  synchronousInputId="Package\DFT Load into ODS Us States\SRC OLE DB ODS US STATES.Inputs[Entrée de destination OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\SRC OLE DB ODS US STATES.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into ODS Us States\SRC OLE DB ODS US STATES.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\SRC OLE DB ODS US STATES.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into ODS Us States\SRC OLE DB ODS US STATES.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Source OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;7"
+              description="Source OLE DB"
+              name="SRC OLE DB STA US STATES"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[dbo].[US_STATES]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable contenant la commande SQL à exécuter."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="Mappages entre les paramètres de la commande SQL et les variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Connections[OleDbConnection]"
+                  connectionManagerID="{D23F9E8B-3084-4ED7-8F4D-155F822CD413}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SSIS_STA]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie de source OLE DB]"
+                  name="Sortie de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie de source OLE DB].Columns[StateCD]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie de source OLE DB].ExternalColumns[StateCD]"
+                      length="255"
+                      lineageId="Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie de source OLE DB].Columns[StateCD]"
+                      name="StateCD"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie de source OLE DB].Columns[Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie de source OLE DB].ExternalColumns[Name]"
+                      length="255"
+                      lineageId="Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie de source OLE DB].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie de source OLE DB].Columns[Region]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie de source OLE DB].ExternalColumns[Region]"
+                      length="255"
+                      lineageId="Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie de source OLE DB].Columns[Region]"
+                      name="Region"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie de source OLE DB].ExternalColumns[StateCD]"
+                      dataType="wstr"
+                      length="255"
+                      name="StateCD" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie de source OLE DB].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie de source OLE DB].ExternalColumns[Region]"
+                      dataType="wstr"
+                      length="255"
+                      name="Region" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie d'erreur de source OLE DB]"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie d'erreur de source OLE DB].Columns[StateCD]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie d'erreur de source OLE DB].Columns[StateCD]"
+                      name="StateCD" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie d'erreur de source OLE DB].Columns[Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie d'erreur de source OLE DB].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie d'erreur de source OLE DB].Columns[Region]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie d'erreur de source OLE DB].Columns[Region]"
+                      name="Region" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT Load into ODS Us States.Paths[Sortie d'erreur de conversion de données]"
+              endId="Package\DFT Load into ODS Us States\DER - Error info StateCD.Inputs[Entrée de colonne dérivée]"
+              name="Sortie d'erreur de conversion de données"
+              startId="Package\DFT Load into ODS Us States\DCNV - Checking StateCD.Outputs[Sortie d'erreur de conversion de données]" />
+            <path
+              refId="Package\DFT Load into ODS Us States.Paths[Sortie d'erreur de conversion de données1]"
+              endId="Package\DFT Load into ODS Us States\DER - Error info Name.Inputs[Entrée de colonne dérivée]"
+              name="Sortie d'erreur de conversion de données"
+              startId="Package\DFT Load into ODS Us States\DCNV - Name.Outputs[Sortie d'erreur de conversion de données]" />
+            <path
+              refId="Package\DFT Load into ODS Us States.Paths[Sortie d'erreur de conversion de données2]"
+              endId="Package\DFT Load into ODS Us States\DER - Error info Region.Inputs[Entrée de colonne dérivée]"
+              name="Sortie d'erreur de conversion de données"
+              startId="Package\DFT Load into ODS Us States\DCNV - Region.Outputs[Sortie d'erreur de conversion de données]" />
+            <path
+              refId="Package\DFT Load into ODS Us States.Paths[Sortie de colonne dérivée]"
+              endId="Package\DFT Load into ODS Us States\All - Errors.Inputs[Unir tout entrée 1]"
+              name="Sortie de colonne dérivée"
+              startId="Package\DFT Load into ODS Us States\DER - Error info StateCD.Outputs[Sortie de colonne dérivée]" />
+            <path
+              refId="Package\DFT Load into ODS Us States.Paths[Sortie de colonne dérivée1]"
+              endId="Package\DFT Load into ODS Us States\All - Errors.Inputs[Entrée Union All 1]"
+              name="Sortie de colonne dérivée"
+              startId="Package\DFT Load into ODS Us States\DER - Error info Name.Outputs[Sortie de colonne dérivée]" />
+            <path
+              refId="Package\DFT Load into ODS Us States.Paths[Sortie de colonne dérivée2]"
+              endId="Package\DFT Load into ODS Us States\All - Errors.Inputs[Entrée Union All 2]"
+              name="Sortie de colonne dérivée"
+              startId="Package\DFT Load into ODS Us States\DER - Error info Region.Outputs[Sortie de colonne dérivée]" />
+            <path
+              refId="Package\DFT Load into ODS Us States.Paths[Sortie de conversion de données]"
+              endId="Package\DFT Load into ODS Us States\DCNV - Name.Inputs[Entrée de conversion de données]"
+              name="Sortie de conversion de données"
+              startId="Package\DFT Load into ODS Us States\DCNV - Checking StateCD.Outputs[Sortie de conversion de données]" />
+            <path
+              refId="Package\DFT Load into ODS Us States.Paths[Sortie de conversion de données1]"
+              endId="Package\DFT Load into ODS Us States\DCNV - Region.Inputs[Entrée de conversion de données]"
+              name="Sortie de conversion de données"
+              startId="Package\DFT Load into ODS Us States\DCNV - Name.Outputs[Sortie de conversion de données]" />
+            <path
+              refId="Package\DFT Load into ODS Us States.Paths[Sortie de conversion de données2]"
+              endId="Package\DFT Load into ODS Us States\DCNV - Resizing.Inputs[Entrée de conversion de données]"
+              name="Sortie de conversion de données"
+              startId="Package\DFT Load into ODS Us States\DCNV - Region.Outputs[Sortie de conversion de données]" />
+            <path
+              refId="Package\DFT Load into ODS Us States.Paths[Sortie de conversion de données3]"
+              endId="Package\DFT Load into ODS Us States\SRC OLE DB ODS US STATES.Inputs[Entrée de destination OLE DB]"
+              name="Sortie de conversion de données"
+              startId="Package\DFT Load into ODS Us States\DCNV - Resizing.Outputs[Sortie de conversion de données]" />
+            <path
+              refId="Package\DFT Load into ODS Us States.Paths[Sortie de source OLE DB]"
+              endId="Package\DFT Load into ODS Us States\DCNV - Checking StateCD.Inputs[Entrée de conversion de données]"
+              name="Sortie de source OLE DB"
+              startId="Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES.Outputs[Sortie de source OLE DB]" />
+            <path
+              refId="Package\DFT Load into ODS Us States.Paths[Unir tout sortie 1]"
+              endId="Package\DFT Load into ODS Us States\OLE_DST - Technical_Rejects.Inputs[Entrée de destination OLE DB]"
+              name="Unir tout sortie 1"
+              startId="Package\DFT Load into ODS Us States\All - Errors.Outputs[Unir tout sortie 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Empty ODS Us States"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tâche d'exécution de requêtes SQL"
+      DTS:DTSID="{E76F28C1-3DAF-4659-8FD6-C570B2DB1815}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Empty ODS Us States"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022 CTP2.0; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{68AE270F-0EE5-4ECF-9E0D-8E4F38A47D57}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE US_STATES;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{6869EF91-4095-49AD-B528-2BF164CA17C5}"
+      DTS:From="Package\SQL - Empty ODS Us States"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DFT Load into ODS Us States" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="216.8,41.6"
+          Id="Package\DFT Load into ODS Us States"
+          TopLeft="279.9999888738,189.800001508395" />
+        <NodeLayout
+          Size="210.4,41.6"
+          Id="Package\SQL - Empty ODS Us States"
+          TopLeft="246.666656865014,69.3333338843452" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="351.866656865014,110.933333884345">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="36.533332008786,78.8666676240498"
+              Start="0,0"
+              End="36.533332008786,71.3666676240498">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.4333338120249" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,35.4333338120249"
+                    Point2="0,39.4333338120249"
+                    Point3="4,39.4333338120249" />
+                  <mssgle:LineSegment
+                    End="32.533332008786,39.4333338120249" />
+                  <mssgle:CubicBezierSegment
+                    Point1="32.533332008786,39.4333338120249"
+                    Point2="36.533332008786,39.4333338120249"
+                    Point3="36.533332008786,43.4333338120249" />
+                  <mssgle:LineSegment
+                    End="36.533332008786,71.3666676240498" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT Load into ODS Us States">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\DFT Load into ODS Us States\DCNV - Region"
+          TopLeft="259.466657659743,319.392596396104" />
+        <NodeLayout
+          Size="227.2,41.6"
+          Id="Package\DFT Load into ODS Us States\SRC OLE DB ODS US STATES"
+          TopLeft="218.333324657547,487.933337211079" />
+        <NodeLayout
+          Size="202.4,41.6"
+          Id="Package\DFT Load into ODS Us States\DCNV - Checking StateCD"
+          TopLeft="227.799992251397,135.370372711405" />
+        <NodeLayout
+          Size="182.4,41.6"
+          Id="Package\DFT Load into ODS Us States\DER - Error info Name"
+          TopLeft="704.559232565945,238.60000316143" />
+        <NodeLayout
+          Size="156.8,41.6"
+          Id="Package\DFT Load into ODS Us States\DCNV - Resizing"
+          TopLeft="253.466658851836,404.733336549865" />
+        <NodeLayout
+          Size="188,41.6"
+          Id="Package\DFT Load into ODS Us States\DER - Error info Region"
+          TopLeft="700.299973475934,321.009526818442" />
+        <NodeLayout
+          Size="224.8,41.6"
+          Id="Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES"
+          TopLeft="210.83332495557,43.3333336777157" />
+        <NodeLayout
+          Size="144.8,41.6"
+          Id="Package\DFT Load into ODS Us States\DCNV - Name"
+          TopLeft="259.744435426483,231.088891990626" />
+        <NodeLayout
+          Size="220,41.6"
+          Id="Package\DFT Load into ODS Us States\OLE_DST - Technical_Rejects"
+          TopLeft="1329.03539918136,264.228574793679" />
+        <NodeLayout
+          Size="194.4,41.6"
+          Id="Package\DFT Load into ODS Us States\DER - Error info StateCD"
+          TopLeft="705.392565866165,135.200001074473" />
+        <NodeLayout
+          Size="127.2,41.6"
+          Id="Package\DFT Load into ODS Us States\All - Errors"
+          TopLeft="1085.19998052915,272.133335496055" />
+        <EdgeLayout
+          Id="Package\DFT Load into ODS Us States.Paths[Unir tout sortie 1]"
+          TopLeft="1212.39998052915,288.980955144867">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="116.635418652207,0"
+              Start="0,0"
+              End="109.135418652207,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="109.135418652207,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Load into ODS Us States.Paths[Sortie de source OLE DB]"
+          TopLeft="326.116658603483,84.9333336777157">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50.4370390336894"
+              Start="0,0"
+              End="0,42.9370390336894">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.9370390336894" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Load into ODS Us States.Paths[Sortie de conversion de données3]"
+          TopLeft="331.899991754691,446.333336549865">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.6000006612136"
+              Start="0,0"
+              End="0,34.1000006612136">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.1000006612136" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Load into ODS Us States.Paths[Sortie de conversion de données2]"
+          TopLeft="333.06665825579,360.992596396104">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43.7407401537606"
+              Start="0,0"
+              End="0,36.2407401537606">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.2407401537606" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Load into ODS Us States.Paths[Sortie de conversion de données1]"
+          TopLeft="333.205546543113,272.688891990626">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46.7037044054782"
+              Start="0,0"
+              End="0,39.2037044054782">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.2037044054782" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Load into ODS Us States.Paths[Sortie de conversion de données]"
+          TopLeft="330.57221383894,176.970372711405">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,54.118519279221"
+              Start="0,0"
+              End="0,46.618519279221">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46.618519279221" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Load into ODS Us States.Paths[Sortie de colonne dérivée2]"
+          TopLeft="888.299973475934,341.809526818442">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="196.900007053216,-43.2761913223875"
+              Start="0,0"
+              End="189.400007053216,-43.2761913223875">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="109.764448519636,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="109.764448519636,0"
+                    Point2="113.764448519636,0"
+                    Point3="113.764448519636,-4" />
+                  <mssgle:LineSegment
+                    End="113.764448519636,-39.2761913223875" />
+                  <mssgle:CubicBezierSegment
+                    Point1="113.764448519636,-39.2761913223875"
+                    Point2="113.764448519636,-43.2761913223875"
+                    Point3="117.764448519636,-43.2761913223875" />
+                  <mssgle:LineSegment
+                    End="189.400007053216,-43.2761913223875" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Load into ODS Us States.Paths[Sortie de colonne dérivée1]"
+          TopLeft="886.959232565945,259.40000316143">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="198.240747963205,27.9333323346244"
+              Start="0,0"
+              End="190.740747963205,27.9333323346244">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="110.539098823185,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="110.539098823185,0"
+                    Point2="114.539098823185,0"
+                    Point3="114.539098823185,4" />
+                  <mssgle:LineSegment
+                    End="114.539098823185,23.9333323346244" />
+                  <mssgle:CubicBezierSegment
+                    Point1="114.539098823185,23.9333323346244"
+                    Point2="114.539098823185,27.9333323346244"
+                    Point3="118.539098823185,27.9333323346244" />
+                  <mssgle:LineSegment
+                    End="190.740747963205,27.9333323346244" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Load into ODS Us States.Paths[Sortie de colonne dérivée]"
+          TopLeft="802.592565866165,176.800001074473">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="346.207414662985,95.3333344215818"
+              Start="0,0"
+              End="346.207414662985,87.8333344215818">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.6666672107909" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,43.6666672107909"
+                    Point2="0,47.6666672107909"
+                    Point3="4,47.6666672107909" />
+                  <mssgle:LineSegment
+                    End="342.207414662985,47.6666672107909" />
+                  <mssgle:CubicBezierSegment
+                    Point1="342.207414662985,47.6666672107909"
+                    Point2="346.207414662985,47.6666672107909"
+                    Point3="346.207414662985,51.6666672107909" />
+                  <mssgle:LineSegment
+                    End="346.207414662985,87.8333344215818" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Load into ODS Us States.Paths[Sortie d'erreur de conversion de données2]"
+          TopLeft="409.066657659743,341.001061607273">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="291.233315816191,0"
+              Start="0,0"
+              End="283.733315816191,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="283.733315816191,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="50.3584157205955,5,183.016484375,10.3349609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Load into ODS Us States.Paths[Sortie d'erreur de conversion de données1]"
+          TopLeft="404.544435426483,255.644447576028">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="300.014797139462,0"
+              Start="0,0"
+              End="292.514797139462,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="292.514797139462,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="54.749156382231,5,183.016484375,10.3349609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Load into ODS Us States.Paths[Sortie d'erreur de conversion de données]"
+          TopLeft="430.199992251397,156.085186892939">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="275.192573614769,0"
+              Start="0,0"
+              End="267.692573614769,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="267.692573614769,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="42.3380446198845,5,183.016484375,10.3349609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Load into ODS Us States\SRC OLE DB ODS US STATES">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Load into ODS Us States\SRC OLE DB STA US STATES">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Load into ODS Us States\OLE_DST - Technical_Rejects">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

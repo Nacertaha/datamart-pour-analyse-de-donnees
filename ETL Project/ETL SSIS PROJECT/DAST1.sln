@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32510.428
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "DAST1", "DAST1\DAST1.dtproj", "{81DAB801-0E15-45DB-9BD6-B5F7D3A9BB19}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{81DAB801-0E15-45DB-9BD6-B5F7D3A9BB19}.Development|Default.ActiveCfg = Development
+		{81DAB801-0E15-45DB-9BD6-B5F7D3A9BB19}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C0541F3B-568F-4E3F-8CC0-4BEE6717AC2B}
+	EndGlobalSection
+EndGlobal

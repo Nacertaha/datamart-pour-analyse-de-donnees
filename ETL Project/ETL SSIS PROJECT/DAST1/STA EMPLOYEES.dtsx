@@ -1,0 +1,524 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/13/2022 1:34:47 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="VICTUSJIM"
+  DTS:CreatorName="VICTUSJIM\dmwag"
+  DTS:DTSID="{7780D1EB-E373-455C-A44C-B77945EDB922}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.521.0"
+  DTS:LocaleID="1036"
+  DTS:ObjectName="STA EMPLOYEES"
+  DTS:PackageType="5"
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{210D334F-90C7-4BDB-BB28-CA96EF7C1CCA}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{4B33E306-C8F3-40C6-9E6B-98B314C42B1F}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\dmwag\Documents\Datawarehousing &amp; ETL\Lookup data.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT Load into STA Lookup Data Employees"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tâche de flux de données"
+      DTS:DTSID="{D3BD4E8E-7ED1-4B26-8F62-D288AC724385}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT Load into STA Lookup Data Employees"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT Load into STA Lookup Data Employees\DFT Load into STA Lookup Data Employees"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destination OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;4"
+              description="Destination OLE DB"
+              name="DFT Load into STA Lookup Data Employees"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[Employees]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les valeurs fournies pour les colonnes d'identité seront copiées à la destination. Si la valeur est définie à False, les valeurs des colonnes d'identité seront générées automatiquement à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les colonnes contenant la valeur NULL auront cette valeur NULL copiée à la destination. Si la valeur est définie à False, les colonnes contenant la valeur NULL auront leurs valeurs par défaut insérées à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie les options à utiliser avec le chargement rapide.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie quand les validations sont émises pendant l'insertion des données.  Une valeur égale à 0 spécifie qu'une validation sera émise à la fin de l'insertion des données.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT Load into STA Lookup Data Employees\DFT Load into STA Lookup Data Employees.Connections[OleDbConnection]"
+                  connectionManagerID="{D23F9E8B-3084-4ED7-8F4D-155F822CD413}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SSIS_STA]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT Load into STA Lookup Data Employees\DFT Load into STA Lookup Data Employees.Inputs[Entrée de destination OLE DB]"
+                  errorOrTruncationOperation="Insérer"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrée de destination OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Load into STA Lookup Data Employees\DFT Load into STA Lookup Data Employees.Inputs[Entrée de destination OLE DB].Columns[EmployeeID]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="EmployeeID"
+                      externalMetadataColumnId="Package\DFT Load into STA Lookup Data Employees\DFT Load into STA Lookup Data Employees.Inputs[Entrée de destination OLE DB].ExternalColumns[EmployeeID]"
+                      lineageId="Package\DFT Load into STA Lookup Data Employees\EX SRC - LOOKUP DATA EMPLOYEES.Outputs[Sortie de source Excel].Columns[EmployeeID]" />
+                    <inputColumn
+                      refId="Package\DFT Load into STA Lookup Data Employees\DFT Load into STA Lookup Data Employees.Inputs[Entrée de destination OLE DB].Columns[EmployeeName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="EmployeeName"
+                      externalMetadataColumnId="Package\DFT Load into STA Lookup Data Employees\DFT Load into STA Lookup Data Employees.Inputs[Entrée de destination OLE DB].ExternalColumns[EmployeeName]"
+                      lineageId="Package\DFT Load into STA Lookup Data Employees\EX SRC - LOOKUP DATA EMPLOYEES.Outputs[Sortie de source Excel].Columns[EmployeeName]" />
+                    <inputColumn
+                      refId="Package\DFT Load into STA Lookup Data Employees\DFT Load into STA Lookup Data Employees.Inputs[Entrée de destination OLE DB].Columns[Site]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Site"
+                      externalMetadataColumnId="Package\DFT Load into STA Lookup Data Employees\DFT Load into STA Lookup Data Employees.Inputs[Entrée de destination OLE DB].ExternalColumns[Site]"
+                      lineageId="Package\DFT Load into STA Lookup Data Employees\EX SRC - LOOKUP DATA EMPLOYEES.Outputs[Sortie de source Excel].Columns[Site]" />
+                    <inputColumn
+                      refId="Package\DFT Load into STA Lookup Data Employees\DFT Load into STA Lookup Data Employees.Inputs[Entrée de destination OLE DB].Columns[ManagerName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ManagerName"
+                      externalMetadataColumnId="Package\DFT Load into STA Lookup Data Employees\DFT Load into STA Lookup Data Employees.Inputs[Entrée de destination OLE DB].ExternalColumns[ManagerName]"
+                      lineageId="Package\DFT Load into STA Lookup Data Employees\EX SRC - LOOKUP DATA EMPLOYEES.Outputs[Sortie de source Excel].Columns[ManagerName]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into STA Lookup Data Employees\DFT Load into STA Lookup Data Employees.Inputs[Entrée de destination OLE DB].ExternalColumns[EmployeeID]"
+                      dataType="wstr"
+                      length="255"
+                      name="EmployeeID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into STA Lookup Data Employees\DFT Load into STA Lookup Data Employees.Inputs[Entrée de destination OLE DB].ExternalColumns[EmployeeName]"
+                      dataType="wstr"
+                      length="255"
+                      name="EmployeeName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into STA Lookup Data Employees\DFT Load into STA Lookup Data Employees.Inputs[Entrée de destination OLE DB].ExternalColumns[Site]"
+                      dataType="wstr"
+                      length="255"
+                      name="Site" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into STA Lookup Data Employees\DFT Load into STA Lookup Data Employees.Inputs[Entrée de destination OLE DB].ExternalColumns[ManagerName]"
+                      dataType="wstr"
+                      length="255"
+                      name="ManagerName" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Load into STA Lookup Data Employees\DFT Load into STA Lookup Data Employees.Outputs[Sortie d'erreur de destination OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de destination OLE DB"
+                  synchronousInputId="Package\DFT Load into STA Lookup Data Employees\DFT Load into STA Lookup Data Employees.Inputs[Entrée de destination OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load into STA Lookup Data Employees\DFT Load into STA Lookup Data Employees.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into STA Lookup Data Employees\DFT Load into STA Lookup Data Employees.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Load into STA Lookup Data Employees\DFT Load into STA Lookup Data Employees.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into STA Lookup Data Employees\DFT Load into STA Lookup Data Employees.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Load into STA Lookup Data Employees\EX SRC - LOOKUP DATA EMPLOYEES"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Source Excel;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;1"
+              description="Source Excel"
+              name="EX SRC - LOOKUP DATA EMPLOYEES"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">Employees$</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable contenant la commande SQL à exécuter."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="Mappage des paramètres de la commande SQL en variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT Load into STA Lookup Data Employees\EX SRC - LOOKUP DATA EMPLOYEES.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT Load into STA Lookup Data Employees\EX SRC - LOOKUP DATA EMPLOYEES.Outputs[Sortie de source Excel]"
+                  name="Sortie de source Excel">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load into STA Lookup Data Employees\EX SRC - LOOKUP DATA EMPLOYEES.Outputs[Sortie de source Excel].Columns[EmployeeID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load into STA Lookup Data Employees\EX SRC - LOOKUP DATA EMPLOYEES.Outputs[Sortie de source Excel].ExternalColumns[EmployeeID]"
+                      length="255"
+                      lineageId="Package\DFT Load into STA Lookup Data Employees\EX SRC - LOOKUP DATA EMPLOYEES.Outputs[Sortie de source Excel].Columns[EmployeeID]"
+                      name="EmployeeID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load into STA Lookup Data Employees\EX SRC - LOOKUP DATA EMPLOYEES.Outputs[Sortie de source Excel].Columns[EmployeeName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load into STA Lookup Data Employees\EX SRC - LOOKUP DATA EMPLOYEES.Outputs[Sortie de source Excel].ExternalColumns[EmployeeName]"
+                      length="255"
+                      lineageId="Package\DFT Load into STA Lookup Data Employees\EX SRC - LOOKUP DATA EMPLOYEES.Outputs[Sortie de source Excel].Columns[EmployeeName]"
+                      name="EmployeeName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load into STA Lookup Data Employees\EX SRC - LOOKUP DATA EMPLOYEES.Outputs[Sortie de source Excel].Columns[Site]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load into STA Lookup Data Employees\EX SRC - LOOKUP DATA EMPLOYEES.Outputs[Sortie de source Excel].ExternalColumns[Site]"
+                      length="255"
+                      lineageId="Package\DFT Load into STA Lookup Data Employees\EX SRC - LOOKUP DATA EMPLOYEES.Outputs[Sortie de source Excel].Columns[Site]"
+                      name="Site"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load into STA Lookup Data Employees\EX SRC - LOOKUP DATA EMPLOYEES.Outputs[Sortie de source Excel].Columns[ManagerName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load into STA Lookup Data Employees\EX SRC - LOOKUP DATA EMPLOYEES.Outputs[Sortie de source Excel].ExternalColumns[ManagerName]"
+                      length="255"
+                      lineageId="Package\DFT Load into STA Lookup Data Employees\EX SRC - LOOKUP DATA EMPLOYEES.Outputs[Sortie de source Excel].Columns[ManagerName]"
+                      name="ManagerName"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into STA Lookup Data Employees\EX SRC - LOOKUP DATA EMPLOYEES.Outputs[Sortie de source Excel].ExternalColumns[EmployeeID]"
+                      dataType="wstr"
+                      length="255"
+                      name="EmployeeID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into STA Lookup Data Employees\EX SRC - LOOKUP DATA EMPLOYEES.Outputs[Sortie de source Excel].ExternalColumns[EmployeeName]"
+                      dataType="wstr"
+                      length="255"
+                      name="EmployeeName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into STA Lookup Data Employees\EX SRC - LOOKUP DATA EMPLOYEES.Outputs[Sortie de source Excel].ExternalColumns[Site]"
+                      dataType="wstr"
+                      length="255"
+                      name="Site" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load into STA Lookup Data Employees\EX SRC - LOOKUP DATA EMPLOYEES.Outputs[Sortie de source Excel].ExternalColumns[ManagerName]"
+                      dataType="wstr"
+                      length="255"
+                      name="ManagerName" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT Load into STA Lookup Data Employees\EX SRC - LOOKUP DATA EMPLOYEES.Outputs[Sortie d'erreur de source Excel]"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de source Excel">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load into STA Lookup Data Employees\EX SRC - LOOKUP DATA EMPLOYEES.Outputs[Sortie d'erreur de source Excel].Columns[EmployeeID]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT Load into STA Lookup Data Employees\EX SRC - LOOKUP DATA EMPLOYEES.Outputs[Sortie d'erreur de source Excel].Columns[EmployeeID]"
+                      name="EmployeeID" />
+                    <outputColumn
+                      refId="Package\DFT Load into STA Lookup Data Employees\EX SRC - LOOKUP DATA EMPLOYEES.Outputs[Sortie d'erreur de source Excel].Columns[EmployeeName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT Load into STA Lookup Data Employees\EX SRC - LOOKUP DATA EMPLOYEES.Outputs[Sortie d'erreur de source Excel].Columns[EmployeeName]"
+                      name="EmployeeName" />
+                    <outputColumn
+                      refId="Package\DFT Load into STA Lookup Data Employees\EX SRC - LOOKUP DATA EMPLOYEES.Outputs[Sortie d'erreur de source Excel].Columns[Site]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT Load into STA Lookup Data Employees\EX SRC - LOOKUP DATA EMPLOYEES.Outputs[Sortie d'erreur de source Excel].Columns[Site]"
+                      name="Site" />
+                    <outputColumn
+                      refId="Package\DFT Load into STA Lookup Data Employees\EX SRC - LOOKUP DATA EMPLOYEES.Outputs[Sortie d'erreur de source Excel].Columns[ManagerName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT Load into STA Lookup Data Employees\EX SRC - LOOKUP DATA EMPLOYEES.Outputs[Sortie d'erreur de source Excel].Columns[ManagerName]"
+                      name="ManagerName" />
+                    <outputColumn
+                      refId="Package\DFT Load into STA Lookup Data Employees\EX SRC - LOOKUP DATA EMPLOYEES.Outputs[Sortie d'erreur de source Excel].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into STA Lookup Data Employees\EX SRC - LOOKUP DATA EMPLOYEES.Outputs[Sortie d'erreur de source Excel].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Load into STA Lookup Data Employees\EX SRC - LOOKUP DATA EMPLOYEES.Outputs[Sortie d'erreur de source Excel].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load into STA Lookup Data Employees\EX SRC - LOOKUP DATA EMPLOYEES.Outputs[Sortie d'erreur de source Excel].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT Load into STA Lookup Data Employees.Paths[Sortie de source Excel]"
+              endId="Package\DFT Load into STA Lookup Data Employees\DFT Load into STA Lookup Data Employees.Inputs[Entrée de destination OLE DB]"
+              name="Sortie de source Excel"
+              startId="Package\DFT Load into STA Lookup Data Employees\EX SRC - LOOKUP DATA EMPLOYEES.Outputs[Sortie de source Excel]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Empty STA Lookup Data Employees"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tâche d'exécution de requêtes SQL"
+      DTS:DTSID="{C38576A6-6352-413A-8705-03E804FE9525}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Empty STA Lookup Data Employees"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022 CTP2.0; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{D23F9E8B-3084-4ED7-8F4D-155F822CD413}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE EMPLOYEES;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{44BED99D-56EC-4D9F-87C7-108464FCF565}"
+      DTS:From="Package\SQL - Empty STA Lookup Data Employees"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DFT Load into STA Lookup Data Employees" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="283.2,41.6"
+          Id="Package\DFT Load into STA Lookup Data Employees"
+          TopLeft="321.666653884783,221.866668429904" />
+        <NodeLayout
+          Size="276.8,41.6"
+          Id="Package\SQL - Empty STA Lookup Data Employees"
+          TopLeft="327.49998698632,116.133334256278" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="464.583320435551,157.733334256278">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,64.1333341736263"
+              Start="0,0"
+              End="0,56.6333341736263">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,56.6333341736263" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT Load into STA Lookup Data Employees">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="266.4,41.6"
+          Id="Package\DFT Load into STA Lookup Data Employees\EX SRC - LOOKUP DATA EMPLOYEES"
+          TopLeft="332.499986787638,93.6000007438659" />
+        <NodeLayout
+          Size="283.2,41.6"
+          Id="Package\DFT Load into STA Lookup Data Employees\DFT Load into STA Lookup Data Employees"
+          TopLeft="334.166653388077,213.200001694361" />
+        <EdgeLayout
+          Id="Package\DFT Load into STA Lookup Data Employees.Paths[Sortie de source Excel]"
+          TopLeft="465.699986787638,135.200000743866">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="10.066666600439,78.0000009504951"
+              Start="0,0"
+              End="10.066666600439,70.5000009504951">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.0000004752475" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,35.0000004752475"
+                    Point2="0,39.0000004752475"
+                    Point3="4,39.0000004752475" />
+                  <mssgle:LineSegment
+                    End="6.06666660043896,39.0000004752475" />
+                  <mssgle:CubicBezierSegment
+                    Point1="6.06666660043896,39.0000004752475"
+                    Point2="10.066666600439,39.0000004752475"
+                    Point3="10.066666600439,43.0000004752475" />
+                  <mssgle:LineSegment
+                    End="10.066666600439,70.5000009504951" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Load into STA Lookup Data Employees\DFT Load into STA Lookup Data Employees">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Load into STA Lookup Data Employees\EX SRC - LOOKUP DATA EMPLOYEES">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
